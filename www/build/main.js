@@ -68,12 +68,87 @@ var HomePage = (function () {
     function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
         this.coffee = 'hot';
+        this.productList = [];
+        this.items = [];
+        this.productList.push({
+            _id: '1',
+            name: "Ice Cocoa",
+            image: "www",
+            size: [
+                {
+                    name: "S",
+                    price: 40
+                },
+                {
+                    name: "M",
+                    price: 50
+                },
+                {
+                    name: "L",
+                    price: 60
+                }
+            ],
+            category: "ice"
+        });
     }
     HomePage.prototype.goToCart = function () {
         this.navCtrl.push('CartPage');
     };
     HomePage.prototype.goToConfirm = function () {
         this.navCtrl.push('ConfirmPage');
+    };
+    HomePage.prototype.getProductByCategory = function (cate) {
+        console.log(cate);
+    };
+    HomePage.prototype.addProduct = function (item, size) {
+        if (this.items.length > 0) {
+            var pSize = this.items.filter(function (e) { return e.size === size.name; });
+            if (pSize.length === 0) {
+                this.items.push({
+                    _id: item._id,
+                    image: item.image,
+                    name: item.name,
+                    size: size.name,
+                    price: size.price,
+                    qty: 1,
+                    amount: size.price
+                });
+                return;
+            }
+            var indexOfStevie = pSize.findIndex(function (i) { return i._id === item._id; });
+            console.log(indexOfStevie);
+            if (indexOfStevie !== -1) {
+                if (pSize[indexOfStevie].size === size.name) {
+                    pSize[indexOfStevie].qty++;
+                    pSize[indexOfStevie].amount = pSize[indexOfStevie].qty * pSize[indexOfStevie].price;
+                }
+                else {
+                    this.items.push({
+                        _id: item._id,
+                        image: item.image,
+                        name: item.name,
+                        size: size.name,
+                        price: size.price,
+                        qty: 1,
+                        amount: size.price
+                    });
+                }
+            }
+            else {
+            }
+        }
+        else {
+            this.items.push({
+                _id: item._id,
+                image: item.image,
+                name: item.name,
+                size: size.name,
+                price: size.price,
+                qty: 1,
+                amount: size.price
+            });
+        }
+        window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

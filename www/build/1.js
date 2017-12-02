@@ -66,6 +66,8 @@ var CartPage = (function () {
     function CartPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.productList = [];
+        this.productList = JSON.parse(window.localStorage.getItem('coffeeCart'));
     }
     CartPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad CartPage');
