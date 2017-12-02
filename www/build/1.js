@@ -66,17 +66,19 @@ var CartPage = (function () {
     function CartPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.productList = JSON.parse(window.localStorage.getItem('coffeeCart'));
     }
     CartPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad CartPage');
     };
     CartPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cart',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\cart\cart.html"*/'<!--\n  Generated template for the CartPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>cart</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\cart\cart.html"*/,
+            selector: 'page-cart',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\cart\cart.html"*/'<!--\n  Generated template for the CartPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>cart</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item *ngFor="let item of productList">\n      <ion-thumbnail item-start>\n        <img src="img/thumbnail-totoro.png">\n      </ion-thumbnail>\n      <h2>{{item.name}}</h2>\n      <h2>Size: S</h2>\n      <h2>จำนวน: 1</h2>\n      <p>ราคา 1988</p>\n      <button ion-button icon-only class="btn-size">\n        <ion-icon name="add"></ion-icon>\n      </button>\n      <button ion-button clear class="btn-size">\n        1\n      </button>\n      <button ion-button icon-only class="btn-size">\n        <ion-icon name="remove"></ion-icon>\n      </button>\n\n      <button ion-button icon-only item-end color="danger" class="btn-size">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\cart\cart.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
     ], CartPage);
     return CartPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=cart.js.map

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProductModel } from '../../assets/model/product.model';
 
 /**
  * Generated class for the CartPage page.
@@ -14,8 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'cart.html',
 })
 export class CartPage {
+  productList: Array<ProductModel> = [];
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.productList = JSON.parse(window.localStorage.getItem('coffeeCart'));
   }
 
   ionViewDidLoad() {

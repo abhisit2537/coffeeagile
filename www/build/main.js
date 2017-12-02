@@ -68,6 +68,28 @@ var HomePage = (function () {
     function HomePage(navCtrl) {
         this.navCtrl = navCtrl;
         this.coffee = 'hot';
+        this.productList = [];
+        this.items = [];
+        this.productList.push({
+            _id: '1',
+            name: "Ice Cocoa",
+            image: "www",
+            size: [
+                {
+                    name: "S",
+                    price: 40
+                },
+                {
+                    name: "M",
+                    price: 50
+                },
+                {
+                    name: "L",
+                    price: 60
+                }
+            ],
+            category: "ice"
+        });
     }
     HomePage.prototype.goToCart = function () {
         this.navCtrl.push('CartPage');
@@ -75,13 +97,67 @@ var HomePage = (function () {
     HomePage.prototype.goToConfirm = function () {
         this.navCtrl.push('ConfirmPage');
     };
+    HomePage.prototype.getProductByCategory = function (cate) {
+        console.log(cate);
+    };
+    HomePage.prototype.addProduct = function (item, size) {
+        if (this.items.length > 0) {
+            var pSize = this.items.filter(function (e) { return e.size === size.name; });
+            if (pSize.length === 0) {
+                this.items.push({
+                    _id: item._id,
+                    image: item.image,
+                    name: item.name,
+                    size: size.name,
+                    price: size.price,
+                    qty: 1,
+                    amount: size.price
+                });
+                return;
+            }
+            var indexOfStevie = pSize.findIndex(function (i) { return i._id === item._id; });
+            console.log(indexOfStevie);
+            if (indexOfStevie !== -1) {
+                if (pSize[indexOfStevie].size === size.name) {
+                    pSize[indexOfStevie].qty++;
+                    pSize[indexOfStevie].amount = pSize[indexOfStevie].qty * pSize[indexOfStevie].price;
+                }
+                else {
+                    this.items.push({
+                        _id: item._id,
+                        image: item.image,
+                        name: item.name,
+                        size: size.name,
+                        price: size.price,
+                        qty: 1,
+                        amount: size.price
+                    });
+                }
+            }
+            else {
+            }
+        }
+        else {
+            this.items.push({
+                _id: item._id,
+                image: item.image,
+                name: item.name,
+                size: size.name,
+                price: size.price,
+                qty: 1,
+                amount: size.price
+            });
+        }
+        window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="coffee">\n\n    <div *ngSwitchCase="\'hot\'">\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-thumbnail item-start>\n\n            <img src="img/thumbnail-totoro.png">\n\n          </ion-thumbnail>\n\n          <h2>กาแฟ</h2>\n\n          <p>ราคา 1988</p>\n\n          <button ion-button outline>S</button>\n\n          <button ion-button outline>M</button>\n\n          <button ion-button outline>L</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </div>\n\n    <div *ngSwitchCase="\'cool\'">\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-thumbnail item-start>\n\n            <img src="img/thumbnail-totoro.png">\n\n          </ion-thumbnail>\n\n          <h2>กาแฟ2</h2>\n\n          <p>ราคา 1988</p>\n\n          <button ion-button outline>S</button>\n\n          <button ion-button outline>M</button>\n\n          <button ion-button outline>L</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </div>\n\n    <div *ngSwitchCase="\'frappe\'">\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-thumbnail item-start>\n\n            <img src="img/thumbnail-totoro.png">\n\n          </ion-thumbnail>\n\n          <h2>กาแฟ3</h2>\n\n          <p>ราคา 1988</p>\n\n          <button ion-button outline>S</button>\n\n          <button ion-button outline>M</button>\n\n          <button ion-button outline>L</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </div>\n\n  </div>\n\n  <button ion-button block (click)="goToCart()">Cart</button>\n\n  <button ion-button block (click)="goToConfirm()">Confirm</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="coffee">\n\n    <div *ngSwitchCase="\'hot\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of productList">\n\n          <ion-thumbnail item-start>\n\n            <img src="img/thumbnail-totoro.png">\n\n          </ion-thumbnail>\n\n          <h2>{{item.name}}</h2>\n\n          <p>ราคา 1988</p>\n\n          <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}}</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </div>\n\n  </div>\n\n  <button ion-button block (click)="goToCart()">Cart</button>\n\n  <button ion-button block (click)="goToConfirm()">Confirm</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object])
     ], HomePage);
     return HomePage;
+    var _a;
 }());
 
 //# sourceMappingURL=home.js.map
