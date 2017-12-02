@@ -31,11 +31,21 @@
 
 #import "GCDWebServerPrivate.h"
 
+<<<<<<< HEAD
 @implementation GCDWebServerStreamedResponse {
   GCDWebServerAsyncStreamBlock _block;
 }
 
 @dynamic contentType;
+=======
+@interface GCDWebServerStreamedResponse () {
+@private
+  GCDWebServerAsyncStreamBlock _block;
+}
+@end
+
+@implementation GCDWebServerStreamedResponse
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 + (instancetype)responseWithContentType:(NSString*)type streamBlock:(GCDWebServerStreamBlock)block {
   return [[[self class] alloc] initWithContentType:type streamBlock:block];

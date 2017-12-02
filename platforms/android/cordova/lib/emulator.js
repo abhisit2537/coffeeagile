@@ -21,9 +21,14 @@
 
 /* jshint sub:true */
 
+<<<<<<< HEAD
 var android_versions = require('android-versions');
 var retry = require('./retry');
 var build = require('./build');
+=======
+var retry      = require('./retry');
+var build      = require('./build');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 var path = require('path');
 var Adb = require('./Adb');
 var AndroidManifest = require('./AndroidManifest');
@@ -34,6 +39,7 @@ var shelljs = require('shelljs');
 var android_sdk = require('./android_sdk');
 var check_reqs = require('./check_reqs');
 
+<<<<<<< HEAD
 var Q = require('q');
 var os = require('os');
 var fs = require('fs');
@@ -48,6 +54,22 @@ var CHECK_BOOTED_INTERVAL = 3 * ONE_SECOND; // in milliseconds
 var EXEC_KILL_SIGNAL = 'SIGKILL';
 
 function forgivingWhichSync (cmd) {
+=======
+var Q             = require('q');
+var os            = require('os');
+var fs            = require('fs');
+var child_process = require('child_process');
+
+// constants
+var ONE_SECOND              = 1000; // in milliseconds
+var ONE_MINUTE              = 60 * ONE_SECOND; // in milliseconds
+var INSTALL_COMMAND_TIMEOUT = 5 * ONE_MINUTE; // in milliseconds
+var NUM_INSTALL_RETRIES     = 3;
+var CHECK_BOOTED_INTERVAL   = 3 * ONE_SECOND; // in milliseconds
+var EXEC_KILL_SIGNAL        = 'SIGKILL';
+
+function forgivingWhichSync(cmd) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     try {
         return fs.realpathSync(shelljs.which(cmd));
     } catch (e) {
@@ -56,7 +78,12 @@ function forgivingWhichSync (cmd) {
 }
 
 module.exports.list_images_using_avdmanager = function () {
+<<<<<<< HEAD
     return superspawn.spawn('avdmanager', ['list', 'avd']).then(function (output) {
+=======
+    return superspawn.spawn('avdmanager', ['list', 'avd'])
+    .then(function(output) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var response = output.split('\n');
         var emulator_list = [];
         for (var i = 1; i < response.length; i++) {
@@ -108,15 +135,25 @@ module.exports.list_images_using_avdmanager = function () {
             /* To just return a list of names use this
             if (response[i].match(/Name:\s/)) {
                 emulator_list.push(response[i].split('Name: ')[1].replace('\r', '');
+<<<<<<< HEAD
             } */
+=======
+            }*/
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
         }
         return emulator_list;
     });
 };
 
+<<<<<<< HEAD
 module.exports.list_images_using_android = function () {
     return superspawn.spawn('android', ['list', 'avd']).then(function (output) {
+=======
+module.exports.list_images_using_android = function() {
+    return superspawn.spawn('android', ['list', 'avd'])
+    .then(function(output) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var response = output.split('\n');
         var emulator_list = [];
         for (var i = 1; i < response.length; i++) {
@@ -151,7 +188,11 @@ module.exports.list_images_using_android = function () {
             /* To just return a list of names use this
             if (response[i].match(/Name:\s/)) {
                 emulator_list.push(response[i].split('Name: ')[1].replace('\r', '');
+<<<<<<< HEAD
             } */
+=======
+            }*/
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
         }
         return emulator_list;
@@ -169,6 +210,7 @@ module.exports.list_images_using_android = function () {
        skin   : <skin>
    }
  */
+<<<<<<< HEAD
 module.exports.list_images = function () {
     return Q.fcall(function () {
         if (forgivingWhichSync('avdmanager')) {
@@ -193,6 +235,18 @@ module.exports.list_images = function () {
             return avd;
         });
     });
+=======
+module.exports.list_images = function() {
+    if (forgivingWhichSync('avdmanager')) {
+        return module.exports.list_images_using_avdmanager();
+    } else if (forgivingWhichSync('android')) {
+        return module.exports.list_images_using_android();
+    } else {
+        return Q().then(function() {
+            throw new CordovaError('Could not find either `android` or `avdmanager` on your $PATH! Are you sure the Android SDK is installed and available?');
+        });
+    }
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 };
 
 /**
@@ -200,8 +254,14 @@ module.exports.list_images = function () {
  * or undefined if no avds exist.
  * Returns a promise.
  */
+<<<<<<< HEAD
 module.exports.best_image = function () {
     return this.list_images().then(function (images) {
+=======
+module.exports.best_image = function() {
+    return this.list_images()
+    .then(function(images) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         // Just return undefined if there is no images
         if (images.length === 0) return;
 
@@ -210,9 +270,15 @@ module.exports.best_image = function () {
         var project_target = check_reqs.get_target().replace('android-', '');
         for (var i in images) {
             var target = images[i].target;
+<<<<<<< HEAD
             if (target) {
                 var num = target.split('(API level ')[1].replace(')', '');
                 if (num === project_target) {
+=======
+            if(target) {
+                var num = target.split('(API level ')[1].replace(')', '');
+                if (num == project_target) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                     return images[i];
                 } else if (project_target - num < closest && project_target > num) {
                     closest = project_target - num;
@@ -225,18 +291,32 @@ module.exports.best_image = function () {
 };
 
 // Returns a promise.
+<<<<<<< HEAD
 module.exports.list_started = function () {
+=======
+module.exports.list_started = function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     return Adb.devices({emulators: true});
 };
 
 // Returns a promise.
 // TODO: we should remove this, there's a more robust method under android_sdk.js
+<<<<<<< HEAD
 module.exports.list_targets = function () {
     return superspawn.spawn('android', ['list', 'targets'], {cwd: os.tmpdir()}).then(function (output) {
         var target_out = output.split('\n');
         var targets = [];
         for (var i = target_out.length; i >= 0; i--) {
             if (target_out[i].match(/id:/)) {
+=======
+module.exports.list_targets = function() {
+    return superspawn.spawn('android', ['list', 'targets'], {cwd: os.tmpdir()})
+    .then(function(output) {
+        var target_out = output.split('\n');
+        var targets = [];
+        for (var i = target_out.length; i >= 0; i--) {
+            if(target_out[i].match(/id:/)) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 targets.push(targets[i].split(' ')[1]);
             }
         }
@@ -251,8 +331,14 @@ module.exports.list_targets = function () {
 module.exports.get_available_port = function () {
     var self = this;
 
+<<<<<<< HEAD
     return self.list_started().then(function (emulators) {
         for (var p = 5584; p >= 5554; p -= 2) {
+=======
+    return self.list_started()
+    .then(function (emulators) {
+        for (var p = 5584; p >= 5554; p-=2) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             if (emulators.indexOf('emulator-' + p) === -1) {
                 events.emit('verbose', 'Found available port: ' + p);
                 return p;
@@ -272,6 +358,7 @@ module.exports.get_available_port = function () {
  *
  * Returns a promise.
  */
+<<<<<<< HEAD
 module.exports.start = function (emulator_ID, boot_timeout) {
     var self = this;
 
@@ -279,6 +366,16 @@ module.exports.start = function (emulator_ID, boot_timeout) {
         if (emulator_ID) return Q(emulator_ID);
 
         return self.best_image().then(function (best) {
+=======
+module.exports.start = function(emulator_ID, boot_timeout) {
+    var self = this;
+
+    return Q().then(function() {
+        if (emulator_ID) return Q(emulator_ID);
+
+        return self.best_image()
+        .then(function(best) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             if (best && best.name) {
                 events.emit('warn', 'No emulator specified, defaulting to ' + best.name);
                 return best.name;
@@ -290,8 +387,14 @@ module.exports.start = function (emulator_ID, boot_timeout) {
                 '2. Create an AVD by running: ' + androidCmd + ' avd\n' +
                 'HINT: For a faster emulator, use an Intel System Image and install the HAXM device driver\n'));
         });
+<<<<<<< HEAD
     }).then(function (emulatorId) {
         return self.get_available_port().then(function (port) {
+=======
+    }).then(function(emulatorId) {
+        return self.get_available_port()
+        .then(function (port) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             // Figure out the directory the emulator binary runs in, and set the cwd to that directory.
             // Workaround for https://code.google.com/p/android/issues/detail?id=235461
             var emulator_dir = path.dirname(shelljs.which('emulator'));
@@ -305,6 +408,7 @@ module.exports.start = function (emulator_ID, boot_timeout) {
             events.emit('log', 'Waiting for emulator to start...');
             return self.wait_for_emulator(port);
         });
+<<<<<<< HEAD
     }).then(function (emulatorId) {
         if (!emulatorId) { return Q.reject(new CordovaError('Failed to start emulator')); }
 
@@ -316,6 +420,22 @@ module.exports.start = function (emulator_ID, boot_timeout) {
                 // unlock screen
                 return Adb.shell(emulatorId, 'input keyevent 82').then(function () {
                     // return the new emulator id for the started emulators
+=======
+    }).then(function(emulatorId) {
+        if (!emulatorId)
+            return Q.reject(new CordovaError('Failed to start emulator'));
+
+        //wait for emulator to boot up
+        process.stdout.write('Waiting for emulator to boot (this may take a while)...');
+        return self.wait_for_boot(emulatorId, boot_timeout)
+        .then(function(success) {
+            if (success) {
+                events.emit('log','BOOT COMPLETE');
+                //unlock screen
+                return Adb.shell(emulatorId, 'input keyevent 82')
+                .then(function() {
+                    //return the new emulator id for the started emulators
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                     return emulatorId;
                 });
             } else {
@@ -330,19 +450,34 @@ module.exports.start = function (emulator_ID, boot_timeout) {
  * Waits for an emulator to boot on a given port.
  * Returns this emulator's ID in a promise.
  */
+<<<<<<< HEAD
 module.exports.wait_for_emulator = function (port) {
     var self = this;
     return Q().then(function () {
         var emulator_id = 'emulator-' + port;
         return Adb.shell(emulator_id, 'getprop dev.bootcomplete').then(function (output) {
+=======
+module.exports.wait_for_emulator = function(port) {
+    var self = this;
+    return Q().then(function() {
+        var emulator_id = 'emulator-' + port;
+        return Adb.shell(emulator_id, 'getprop dev.bootcomplete')
+        .then(function (output) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             if (output.indexOf('1') >= 0) {
                 return emulator_id;
             }
             return self.wait_for_emulator(port);
         }, function (error) {
+<<<<<<< HEAD
             if ((error && error.message &&
             (error.message.indexOf('not found') > -1)) ||
             (error.message.indexOf('device offline') > -1)) {
+=======
+            if (error && error.message &&
+            (error.message.indexOf('not found') > -1) ||
+            error.message.indexOf('device offline') > -1) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 // emulator not yet started, continue waiting
                 return self.wait_for_emulator(port);
             } else {
@@ -350,7 +485,11 @@ module.exports.wait_for_emulator = function (port) {
                 throw error;
             }
         });
+<<<<<<< HEAD
     });
+=======
+     });
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 };
 
 /*
@@ -358,9 +497,16 @@ module.exports.wait_for_emulator = function (port) {
  * promise that resolves to a boolean indicating success. Not specifying a
  * time_remaining or passing a negative value will cause it to wait forever
  */
+<<<<<<< HEAD
 module.exports.wait_for_boot = function (emulator_id, time_remaining) {
     var self = this;
     return Adb.shell(emulator_id, 'ps').then(function (output) {
+=======
+module.exports.wait_for_boot = function(emulator_id, time_remaining) {
+    var self = this;
+    return Adb.shell(emulator_id, 'ps')
+    .then(function(output) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         if (output.match(/android\.process\.acore/)) {
             return true;
         } else if (time_remaining === 0) {
@@ -369,7 +515,11 @@ module.exports.wait_for_boot = function (emulator_id, time_remaining) {
             process.stdout.write('.');
 
             // Check at regular intervals
+<<<<<<< HEAD
             return Q.delay(time_remaining < CHECK_BOOTED_INTERVAL ? time_remaining : CHECK_BOOTED_INTERVAL).then(function () {
+=======
+            return Q.delay(time_remaining < CHECK_BOOTED_INTERVAL ? time_remaining : CHECK_BOOTED_INTERVAL).then(function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 var updated_time = time_remaining >= 0 ? Math.max(time_remaining - CHECK_BOOTED_INTERVAL, 0) : time_remaining;
                 return self.wait_for_boot(emulator_id, updated_time);
             });
@@ -382,10 +532,18 @@ module.exports.wait_for_boot = function (emulator_id, time_remaining) {
  * TODO : Enter the stdin input required to complete the creation of an avd.
  * Returns a promise.
  */
+<<<<<<< HEAD
 module.exports.create_image = function (name, target) {
     console.log('Creating new avd named ' + name);
     if (target) {
         return superspawn.spawn('android', ['create', 'avd', '--name', name, '--target', target]).then(null, function (error) {
+=======
+module.exports.create_image = function(name, target) {
+    console.log('Creating new avd named ' + name);
+    if (target) {
+        return superspawn.spawn('android', ['create', 'avd', '--name', name, '--target', target])
+        .then(null, function(error) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             console.error('ERROR : Failed to create emulator image : ');
             console.error(' Do you have the latest android targets including ' + target + '?');
             console.error(error);
@@ -393,20 +551,35 @@ module.exports.create_image = function (name, target) {
     } else {
         console.log('WARNING : Project target not found, creating avd with a different target but the project may fail to install.');
         // TODO: there's a more robust method for finding targets in android_sdk.js
+<<<<<<< HEAD
         return superspawn.spawn('android', ['create', 'avd', '--name', name, '--target', this.list_targets()[0]]).then(function () {
+=======
+        return superspawn.spawn('android', ['create', 'avd', '--name', name, '--target', this.list_targets()[0]])
+        .then(function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             // TODO: This seems like another error case, even though it always happens.
             console.error('ERROR : Unable to create an avd emulator, no targets found.');
             console.error('Ensure you have targets available by running the "android" command');
             return Q.reject();
+<<<<<<< HEAD
         }, function (error) {
+=======
+        }, function(error) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             console.error('ERROR : Failed to create emulator image : ');
             console.error(error);
         });
     }
 };
 
+<<<<<<< HEAD
 module.exports.resolveTarget = function (target) {
     return this.list_started().then(function (emulator_list) {
+=======
+module.exports.resolveTarget = function(target) {
+    return this.list_started()
+    .then(function(emulator_list) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         if (emulator_list.length < 1) {
             return Q.reject('No running Android emulators found, please start an emulator before deploying your project.');
         }
@@ -417,8 +590,14 @@ module.exports.resolveTarget = function (target) {
             return Q.reject('Unable to find target \'' + target + '\'. Failed to deploy to emulator.');
         }
 
+<<<<<<< HEAD
         return build.detectArchitecture(target).then(function (arch) {
             return {target: target, arch: arch, isEmulator: true};
+=======
+        return build.detectArchitecture(target)
+        .then(function(arch) {
+            return {target:target, arch:arch, isEmulator:true};
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         });
     });
 };
@@ -429,7 +608,11 @@ module.exports.resolveTarget = function (target) {
  * If no started emulators are found, error out.
  * Returns a promise.
  */
+<<<<<<< HEAD
 module.exports.install = function (givenTarget, buildResults) {
+=======
+module.exports.install = function(givenTarget, buildResults) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     var target;
     var manifest = new AndroidManifest(path.join(__dirname, '../../AndroidManifest.xml'));
@@ -437,7 +620,11 @@ module.exports.install = function (givenTarget, buildResults) {
 
     // resolve the target emulator
     return Q().then(function () {
+<<<<<<< HEAD
         if (givenTarget && typeof givenTarget === 'object') {
+=======
+        if (givenTarget && typeof givenTarget == 'object') {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             return givenTarget;
         } else {
             return module.exports.resolveTarget(givenTarget);
@@ -451,12 +638,21 @@ module.exports.install = function (givenTarget, buildResults) {
     }).then(function () {
         // This promise is always resolved, even if 'adb uninstall' fails to uninstall app
         // or the app doesn't installed at all, so no error catching needed.
+<<<<<<< HEAD
         return Q.when().then(function () {
+=======
+        return Q.when()
+        .then(function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
             var apk_path = build.findBestApkForArchitecture(buildResults, target.arch);
             var execOptions = {
                 cwd: os.tmpdir(),
+<<<<<<< HEAD
                 timeout: INSTALL_COMMAND_TIMEOUT, // in milliseconds
+=======
+                timeout:    INSTALL_COMMAND_TIMEOUT, // in milliseconds
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 killSignal: EXEC_KILL_SIGNAL
             };
 
@@ -467,12 +663,20 @@ module.exports.install = function (givenTarget, buildResults) {
             // A special function to call adb install in specific environment w/ specific options.
             // Introduced as a part of fix for http://issues.apache.org/jira/browse/CB-9119
             // to workaround sporadic emulator hangs
+<<<<<<< HEAD
             function adbInstallWithOptions (target, apk, opts) {
+=======
+            function adbInstallWithOptions(target, apk, opts) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 events.emit('verbose', 'Installing apk ' + apk + ' on ' + target + '...');
 
                 var command = 'adb -s ' + target + ' install -r "' + apk + '"';
                 return Q.promise(function (resolve, reject) {
+<<<<<<< HEAD
                     child_process.exec(command, opts, function (err, stdout, stderr) {
+=======
+                    child_process.exec(command, opts, function(err, stdout, stderr) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                         if (err) reject(new CordovaError('Error executing "' + command + '": ' + stderr));
                         // adb does not return an error code even if installation fails. Instead it puts a specific
                         // message to stdout, so we have to use RegExp matching to detect installation failure.
@@ -492,23 +696,42 @@ module.exports.install = function (givenTarget, buildResults) {
             }
 
             function installPromise () {
+<<<<<<< HEAD
                 return adbInstallWithOptions(target.target, apk_path, execOptions).catch(function (error) {
                     // CB-9557 CB-10157 only uninstall and reinstall app if the one that
                     // is already installed on device was signed w/different certificate
                     if (!/INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES/.test(error.toString())) { throw error; }
+=======
+                return adbInstallWithOptions(target.target, apk_path, execOptions)
+                .catch(function (error) {
+                    // CB-9557 CB-10157 only uninstall and reinstall app if the one that
+                    // is already installed on device was signed w/different certificate
+                    if (!/INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES/.test(error.toString()))
+                        throw error;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
                     events.emit('warn', 'Uninstalling app from device and reinstalling it because the ' +
                         'currently installed app was signed with different key');
 
                     // This promise is always resolved, even if 'adb uninstall' fails to uninstall app
                     // or the app doesn't installed at all, so no error catching needed.
+<<<<<<< HEAD
                     return Adb.uninstall(target.target, pkgName).then(function () {
+=======
+                    return Adb.uninstall(target.target, pkgName)
+                    .then(function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                         return adbInstallWithOptions(target.target, apk_path, execOptions);
                     });
                 });
             }
 
+<<<<<<< HEAD
             return retry.retryPromise(NUM_INSTALL_RETRIES, installPromise).then(function (output) {
+=======
+            return retry.retryPromise(NUM_INSTALL_RETRIES, installPromise)
+            .then(function (output) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 events.emit('log', 'INSTALL SUCCESS');
             });
         });

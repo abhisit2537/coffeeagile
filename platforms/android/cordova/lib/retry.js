@@ -45,12 +45,20 @@ module.exports.retryPromise = function (attemts_left, promiseFunction) {
     return promiseFunction.apply(undefined, promiseFunctionArguments).then(
 
         // on success pass results through
+<<<<<<< HEAD
         function onFulfilled (value) {
+=======
+        function onFulfilled(value) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             return value;
         },
 
         // on rejection either retry, or throw the error
+<<<<<<< HEAD
         function onRejected (error) {
+=======
+        function onRejected(error) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
             attemts_left -= 1;
 

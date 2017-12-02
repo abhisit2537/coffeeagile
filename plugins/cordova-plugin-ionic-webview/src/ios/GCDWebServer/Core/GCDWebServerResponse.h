@@ -27,13 +27,20 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerBodyReaderCompletionBlock is passed by GCDWebServer to the
  *  GCDWebServerBodyReader object when reading data from it asynchronously.
  */
+<<<<<<< HEAD
 typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* _Nullable error);
+=======
+typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* error);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  This protocol is used by the GCDWebServerConnection to communicate with
@@ -64,7 +71,11 @@ typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* _Nu
  *  or an empty NSData there is no more body data, or nil on error and set
  *  the "error" argument which is guaranteed to be non-NULL.
  */
+<<<<<<< HEAD
 - (nullable NSData*)readData:(NSError**)error;
+=======
+- (NSData*)readData:(NSError**)error;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  This method is called after all body data has been sent.
@@ -104,7 +115,11 @@ typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* _Nu
  *
  *  @warning This property must be set if a body is present.
  */
+<<<<<<< HEAD
 @property(nonatomic, copy, nullable) NSString* contentType;
+=======
+@property(nonatomic, copy) NSString* contentType;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Sets the content length for the body of the response. If a body is present
@@ -138,14 +153,22 @@ typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* _Nu
  *
  *  The default value is nil.
  */
+<<<<<<< HEAD
 @property(nonatomic, nullable) NSDate* lastModifiedDate;
+=======
+@property(nonatomic, retain) NSDate* lastModifiedDate;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Sets the ETag for the response using the "ETag" header.
  *
  *  The default value is nil.
  */
+<<<<<<< HEAD
 @property(nonatomic, copy, nullable) NSString* eTag;
+=======
+@property(nonatomic, copy) NSString* eTag;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Enables gzip encoding for the response body.
@@ -176,7 +199,11 @@ typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* _Nu
  *  @warning Do not attempt to override the primary headers used
  *  by GCDWebServerResponse like "Content-Type", "ETag", etc...
  */
+<<<<<<< HEAD
 - (void)setValue:(nullable NSString*)value forAdditionalHeader:(NSString*)header;
+=======
+- (void)setValue:(NSString*)value forAdditionalHeader:(NSString*)header;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Convenience method that checks if the contentType property is defined.
@@ -208,5 +235,8 @@ typedef void (^GCDWebServerBodyReaderCompletionBlock)(NSData* data, NSError* _Nu
 - (instancetype)initWithRedirect:(NSURL*)location permanent:(BOOL)permanent;
 
 @end
+<<<<<<< HEAD
 
 NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

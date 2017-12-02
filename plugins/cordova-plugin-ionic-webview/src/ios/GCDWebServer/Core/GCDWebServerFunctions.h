@@ -27,8 +27,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -36,24 +39,37 @@ extern "C" {
 /**
  *  Converts a file extension to the corresponding MIME type.
  *  If there is no match, "application/octet-stream" is returned.
+<<<<<<< HEAD
  *
  *  Overrides allow to customize the built-in mapping from extensions to MIME
  *  types. Keys of the dictionary must be lowercased file extensions without
  *  the period, and the values must be the corresponding MIME types.
  */
 NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension, NSDictionary* _Nullable overrides);
+=======
+ */
+NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Add percent-escapes to a string so it can be used in a URL.
  *  The legal characters ":@/?&=+" are also escaped to ensure compatibility
  *  with URL encoded forms and URL queries.
  */
+<<<<<<< HEAD
 NSString* _Nullable GCDWebServerEscapeURLString(NSString* string);
+=======
+NSString* GCDWebServerEscapeURLString(NSString* string);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Unescapes a URL percent-encoded string.
  */
+<<<<<<< HEAD
 NSString* _Nullable GCDWebServerUnescapeURLString(NSString* string);
+=======
+NSString* GCDWebServerUnescapeURLString(NSString* string);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Extracts the unescaped names and values from an
@@ -69,7 +85,11 @@ NSDictionary* GCDWebServerParseURLEncodedForm(NSString* form);
  *  On iOS, returns the IPv4 or IPv6 address as a string of the WiFi
  *  interface if connected or nil otherwise.
  */
+<<<<<<< HEAD
 NSString* _Nullable GCDWebServerGetPrimaryIPAddress(BOOL useIPv6);
+=======
+NSString* GCDWebServerGetPrimaryIPAddress(BOOL useIPv6);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Converts a date into a string using RFC822 formatting.
@@ -85,7 +105,11 @@ NSString* GCDWebServerFormatRFC822(NSDate* date);
  *
  *  @warning Timezones other than GMT are not supported by this function.
  */
+<<<<<<< HEAD
 NSDate* _Nullable GCDWebServerParseRFC822(NSString* string);
+=======
+NSDate* GCDWebServerParseRFC822(NSString* string);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Converts a date into a string using IOS 8601 formatting.
@@ -100,10 +124,17 @@ NSString* GCDWebServerFormatISO8601(NSDate* date);
  *  @warning Only "calendar" variant is supported at this time and timezones
  *  other than GMT are not supported either.
  */
+<<<<<<< HEAD
 NSDate* _Nullable GCDWebServerParseISO8601(NSString* string);
+=======
+NSDate* GCDWebServerParseISO8601(NSString* string);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 #ifdef __cplusplus
 }
 #endif
+<<<<<<< HEAD
 
 NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

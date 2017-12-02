@@ -31,9 +31,22 @@
 
 #import "GCDWebServerPrivate.h"
 
+<<<<<<< HEAD
 @implementation GCDWebServerFileRequest {
   int _file;
 }
+=======
+@interface GCDWebServerFileRequest () {
+@private
+  NSString* _temporaryPath;
+  int _file;
+}
+@end
+
+@implementation GCDWebServerFileRequest
+
+@synthesize temporaryPath = _temporaryPath;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 - (instancetype)initWithMethod:(NSString*)method url:(NSURL*)url headers:(NSDictionary*)headers path:(NSString*)path query:(NSDictionary*)query {
   if ((self = [super initWithMethod:method url:url headers:headers path:path query:query])) {
@@ -78,14 +91,22 @@
   NSString* creationDateHeader = [self.headers objectForKey:@"X-GCDWebServer-CreationDate"];
   if (creationDateHeader) {
     NSDate* date = GCDWebServerParseISO8601(creationDateHeader);
+<<<<<<< HEAD
     if (!date || ![[NSFileManager defaultManager] setAttributes:@{NSFileCreationDate : date} ofItemAtPath:_temporaryPath error:error]) {
+=======
+    if (!date || ![[NSFileManager defaultManager] setAttributes:@{ NSFileCreationDate : date } ofItemAtPath:_temporaryPath error:error]) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
       return NO;
     }
   }
   NSString* modifiedDateHeader = [self.headers objectForKey:@"X-GCDWebServer-ModifiedDate"];
   if (modifiedDateHeader) {
     NSDate* date = GCDWebServerParseRFC822(modifiedDateHeader);
+<<<<<<< HEAD
     if (!date || ![[NSFileManager defaultManager] setAttributes:@{NSFileModificationDate : date} ofItemAtPath:_temporaryPath error:error]) {
+=======
+    if (!date || ![[NSFileManager defaultManager] setAttributes:@{ NSFileModificationDate : date } ofItemAtPath:_temporaryPath error:error]) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
       return NO;
     }
   }

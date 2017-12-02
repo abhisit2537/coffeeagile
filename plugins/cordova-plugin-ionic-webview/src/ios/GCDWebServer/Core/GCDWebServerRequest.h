@@ -27,8 +27,11 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  Attribute key to retrieve an NSArray containing NSStrings from a GCDWebServerRequest
  *  with the contents of any regular expression captures done on the request path.
@@ -114,7 +117,11 @@ extern NSString* const GCDWebServerRequestAttribute_RegexCaptures;
  *
  *  @warning This property will be nil if there is no query in the URL.
  */
+<<<<<<< HEAD
 @property(nonatomic, readonly, nullable) NSDictionary* query;
+=======
+@property(nonatomic, readonly) NSDictionary* query;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the content type for the body of the request parsed from the
@@ -124,7 +131,11 @@ extern NSString* const GCDWebServerRequestAttribute_RegexCaptures;
  *  "application/octet-stream" if a body is present but there was no
  *  "Content-Type" header.
  */
+<<<<<<< HEAD
 @property(nonatomic, readonly, nullable) NSString* contentType;
+=======
+@property(nonatomic, readonly) NSString* contentType;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the content length for the body of the request parsed from the
@@ -139,12 +150,20 @@ extern NSString* const GCDWebServerRequestAttribute_RegexCaptures;
 /**
  *  Returns the parsed "If-Modified-Since" header or nil if absent or malformed.
  */
+<<<<<<< HEAD
 @property(nonatomic, readonly, nullable) NSDate* ifModifiedSince;
+=======
+@property(nonatomic, readonly) NSDate* ifModifiedSince;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the parsed "If-None-Match" header or nil if absent or malformed.
  */
+<<<<<<< HEAD
 @property(nonatomic, readonly, nullable) NSString* ifNoneMatch;
+=======
+@property(nonatomic, readonly) NSString* ifNoneMatch;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the parsed "Range" header or (NSUIntegerMax, 0) if absent or malformed.
@@ -186,7 +205,11 @@ extern NSString* const GCDWebServerRequestAttribute_RegexCaptures;
 /**
  *  This method is the designated initializer for the class.
  */
+<<<<<<< HEAD
 - (instancetype)initWithMethod:(NSString*)method url:(NSURL*)url headers:(NSDictionary*)headers path:(NSString*)path query:(nullable NSDictionary*)query;
+=======
+- (instancetype)initWithMethod:(NSString*)method url:(NSURL*)url headers:(NSDictionary*)headers path:(NSString*)path query:(NSDictionary*)query;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Convenience method that checks if the contentType property is defined.
@@ -203,8 +226,14 @@ extern NSString* const GCDWebServerRequestAttribute_RegexCaptures;
  *
  *  @return The attribute value for the key.
  */
+<<<<<<< HEAD
 - (nullable id)attributeForKey:(NSString*)key;
 
 @end
 
 NS_ASSUME_NONNULL_END
+=======
+- (id)attributeForKey:(NSString*)key;
+
+@end
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

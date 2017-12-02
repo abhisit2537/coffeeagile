@@ -31,18 +31,37 @@
 
 #import "GCDWebServerPrivate.h"
 
+<<<<<<< HEAD
 @implementation GCDWebServerDataResponse {
   NSData* _data;
   BOOL _done;
 }
 
 @dynamic contentType;
+=======
+@interface GCDWebServerDataResponse () {
+@private
+  NSData* _data;
+  BOOL _done;
+}
+@end
+
+@implementation GCDWebServerDataResponse
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 + (instancetype)responseWithData:(NSData*)data contentType:(NSString*)type {
   return [[[self class] alloc] initWithData:data contentType:type];
 }
 
 - (instancetype)initWithData:(NSData*)data contentType:(NSString*)type {
+<<<<<<< HEAD
+=======
+  if (data == nil) {
+    GWS_DNOT_REACHED();
+    return nil;
+  }
+
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   if ((self = [super init])) {
     _data = data;
 
@@ -117,7 +136,12 @@
   [variables enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSString* value, BOOL* stop) {
     [html replaceOccurrencesOfString:[NSString stringWithFormat:@"%%%@%%", key] withString:value options:0 range:NSMakeRange(0, html.length)];
   }];
+<<<<<<< HEAD
   return [self initWithHTML:html];
+=======
+  id response = [self initWithHTML:html];
+  return response;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 }
 
 - (instancetype)initWithJSONObject:(id)object {
@@ -127,7 +151,10 @@
 - (instancetype)initWithJSONObject:(id)object contentType:(NSString*)type {
   NSData* data = [NSJSONSerialization dataWithJSONObject:object options:0 error:NULL];
   if (data == nil) {
+<<<<<<< HEAD
     GWS_DNOT_REACHED();
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     return nil;
   }
   return [self initWithData:data contentType:type];

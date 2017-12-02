@@ -27,14 +27,21 @@
 
 #import "GCDWebServerResponse.h"
 
+<<<<<<< HEAD
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerStreamBlock is called to stream the data for the HTTP body.
  *  The block must return either a chunk of data, an empty NSData when done, or
  *  nil on error and set the "error" argument which is guaranteed to be non-NULL.
  */
+<<<<<<< HEAD
 typedef NSData* _Nullable (^GCDWebServerStreamBlock)(NSError** error);
+=======
+typedef NSData* (^GCDWebServerStreamBlock)(NSError** error);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  The GCDWebServerAsyncStreamBlock works like the GCDWebServerStreamBlock
@@ -53,7 +60,10 @@ typedef void (^GCDWebServerAsyncStreamBlock)(GCDWebServerBodyReaderCompletionBlo
  *  the body of the HTTP response using a GCD block.
  */
 @interface GCDWebServerStreamedResponse : GCDWebServerResponse
+<<<<<<< HEAD
 @property(nonatomic, copy) NSString* contentType;  // Redeclare as non-null
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a response with streamed data and a given content type.
@@ -76,5 +86,8 @@ typedef void (^GCDWebServerAsyncStreamBlock)(GCDWebServerBodyReaderCompletionBlo
 - (instancetype)initWithContentType:(NSString*)type asyncStreamBlock:(GCDWebServerAsyncStreamBlock)block;
 
 @end
+<<<<<<< HEAD
 
 NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

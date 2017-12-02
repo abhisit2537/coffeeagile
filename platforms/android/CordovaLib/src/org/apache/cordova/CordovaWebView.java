@@ -31,7 +31,11 @@ import android.webkit.WebChromeClient.CustomViewCallback;
  * are not expected to implement it.
  */
 public interface CordovaWebView {
+<<<<<<< HEAD
     public static final String CORDOVA_VERSION = "6.3.0";
+=======
+    public static final String CORDOVA_VERSION = "6.2.3";
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     void init(CordovaInterface cordova, List<PluginEntry> pluginEntries, CordovaPreferences preferences);
 

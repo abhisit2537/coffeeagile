@@ -19,8 +19,13 @@
        under the License.
 */
 
+<<<<<<< HEAD
 var Q = require('q');
 var build = require('./build');
+=======
+var Q     = require('q'),
+    build = require('./build');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 var path = require('path');
 var Adb = require('./Adb');
 var AndroidManifest = require('./AndroidManifest');
@@ -32,16 +37,30 @@ var events = require('cordova-common').events;
  * Returns a promise for the list of the device ID's found
  * @param lookHarder When true, try restarting adb if no devices are found.
  */
+<<<<<<< HEAD
 module.exports.list = function (lookHarder) {
     return Adb.devices().then(function (list) {
+=======
+module.exports.list = function(lookHarder) {
+    return Adb.devices()
+    .then(function(list) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         if (list.length === 0 && lookHarder) {
             // adb kill-server doesn't seem to do the trick.
             // Could probably find a x-platform version of killall, but I'm not actually
             // sure that this scenario even happens on non-OSX machines.
+<<<<<<< HEAD
             return spawn('killall', ['adb']).then(function () {
                 events.emit('verbose', 'Restarting adb to see if more devices are detected.');
                 return Adb.devices();
             }, function () {
+=======
+            return spawn('killall', ['adb'])
+            .then(function() {
+                events.emit('verbose', 'Restarting adb to see if more devices are detected.');
+                return Adb.devices();
+            }, function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 // For non-killall OS's.
                 return list;
             });
@@ -50,8 +69,14 @@ module.exports.list = function (lookHarder) {
     });
 };
 
+<<<<<<< HEAD
 module.exports.resolveTarget = function (target) {
     return this.list(true).then(function (device_list) {
+=======
+module.exports.resolveTarget = function(target) {
+    return this.list(true)
+    .then(function(device_list) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         if (!device_list || !device_list.length) {
             return Q.reject(new CordovaError('Failed to deploy to device, no devices found.'));
         }
@@ -62,7 +87,12 @@ module.exports.resolveTarget = function (target) {
             return Q.reject('ERROR: Unable to find target \'' + target + '\'.');
         }
 
+<<<<<<< HEAD
         return build.detectArchitecture(target).then(function (arch) {
+=======
+        return build.detectArchitecture(target)
+        .then(function(arch) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             return { target: target, arch: arch, isEmulator: false };
         });
     });
@@ -73,6 +103,7 @@ module.exports.resolveTarget = function (target) {
  * and launches it.
  * Returns a promise.
  */
+<<<<<<< HEAD
 module.exports.install = function (target, buildResults) {
     return Q().then(function () {
         if (target && typeof target === 'object') {
@@ -80,6 +111,15 @@ module.exports.install = function (target, buildResults) {
         }
         return module.exports.resolveTarget(target);
     }).then(function (resolvedTarget) {
+=======
+module.exports.install = function(target, buildResults) {
+    return Q().then(function() {
+        if (target && typeof target == 'object') {
+            return target;
+        }
+        return module.exports.resolveTarget(target);
+    }).then(function(resolvedTarget) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var apk_path = build.findBestApkForArchitecture(buildResults, resolvedTarget.arch);
         var manifest = new AndroidManifest(path.join(__dirname, '../../AndroidManifest.xml'));
         var pkgName = manifest.getPackageId();
@@ -87,16 +127,26 @@ module.exports.install = function (target, buildResults) {
         events.emit('log', 'Using apk: ' + apk_path);
         events.emit('log', 'Package name: ' + pkgName);
 
+<<<<<<< HEAD
         return Adb.install(resolvedTarget.target, apk_path, {replace: true}).catch(function (error) {
             // CB-9557 CB-10157 only uninstall and reinstall app if the one that
             // is already installed on device was signed w/different certificate
             if (!/INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES/.test(error.toString())) { throw error; }
+=======
+        return Adb.install(resolvedTarget.target, apk_path, {replace: true})
+        .catch(function (error) {
+            // CB-9557 CB-10157 only uninstall and reinstall app if the one that
+            // is already installed on device was signed w/different certificate
+            if (!/INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES/.test(error.toString()))
+                throw error;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
             events.emit('warn', 'Uninstalling app from device and reinstalling it again because the ' +
                 'installed app already signed with different key');
 
             // This promise is always resolved, even if 'adb uninstall' fails to uninstall app
             // or the app doesn't installed at all, so no error catching needed.
+<<<<<<< HEAD
             return Adb.uninstall(resolvedTarget.target, pkgName).then(function () {
                 return Adb.install(resolvedTarget.target, apk_path, {replace: true});
             });
@@ -106,6 +156,19 @@ module.exports.install = function (target, buildResults) {
         }).then(function () {
             return Adb.start(resolvedTarget.target, launchName);
         }).then(function () {
+=======
+            return Adb.uninstall(resolvedTarget.target, pkgName)
+            .then(function() {
+                return Adb.install(resolvedTarget.target, apk_path, {replace: true});
+            });
+        })
+        .then(function() {
+            //unlock screen
+            return Adb.shell(resolvedTarget.target, 'input keyevent 82');
+        }).then(function() {
+            return Adb.start(resolvedTarget.target, launchName);
+        }).then(function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             events.emit('log', 'LAUNCH SUCCESS');
         });
     });

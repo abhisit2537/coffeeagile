@@ -16,7 +16,10 @@
     specific language governing permissions and limitations
     under the License.
 */
+<<<<<<< HEAD
 /* eslint no-useless-escape: 0 */
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 var Q = require('q');
 var fs = require('fs');
@@ -24,7 +27,10 @@ var path = require('path');
 var shell = require('shelljs');
 var events = require('cordova-common').events;
 var AndroidManifest = require('./AndroidManifest');
+<<<<<<< HEAD
 var checkReqs = require('./check_reqs');
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 var xmlHelpers = require('cordova-common').xmlHelpers;
 var CordovaError = require('cordova-common').CordovaError;
 var ConfigParser = require('cordova-common').ConfigParser;
@@ -42,6 +48,7 @@ module.exports.prepare = function (cordovaProject, options) {
     this._config = updateConfigFilesFrom(cordovaProject.projectConfig, munger, this.locations);
 
     // Update own www dir with project's www assets and plugins' assets and js-files
+<<<<<<< HEAD
     return Q.when(updateWww(cordovaProject, this.locations)).then(function () {
         // update project according to config.xml changes.
         return updateProjectAccordingTo(self._config, self.locations);
@@ -50,6 +57,19 @@ module.exports.prepare = function (cordovaProject, options) {
         updateSplashes(cordovaProject, path.relative(cordovaProject.root, self.locations.res));
         updateFileResources(cordovaProject, path.relative(cordovaProject.root, self.locations.root));
     }).then(function () {
+=======
+    return Q.when(updateWww(cordovaProject, this.locations))
+    .then(function () {
+        // update project according to config.xml changes.
+        return updateProjectAccordingTo(self._config, self.locations);
+    })
+    .then(function () {
+        updateIcons(cordovaProject, path.relative(cordovaProject.root, self.locations.res));
+        updateSplashes(cordovaProject, path.relative(cordovaProject.root, self.locations.res));
+        updateFileResources(cordovaProject, path.relative(cordovaProject.root, self.locations.root));
+    })
+    .then(function () {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         events.emit('verbose', 'Prepared android project successfully');
     });
 };
@@ -90,7 +110,11 @@ module.exports.clean = function (options) {
  *   represents current project's configuration. When returned, the
  *   configuration is already dumped to appropriate config.xml file.
  */
+<<<<<<< HEAD
 function updateConfigFilesFrom (sourceConfig, configMunger, locations) {
+=======
+function updateConfigFilesFrom(sourceConfig, configMunger, locations) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     events.emit('verbose', 'Generating platform-specific config.xml from defaults for android at ' + locations.configXml);
 
     // First cleanup current config and merge project's one into own
@@ -105,7 +129,11 @@ function updateConfigFilesFrom (sourceConfig, configMunger, locations) {
     // Merge changes from app's config.xml into platform's one
     var config = new ConfigParser(locations.configXml);
     xmlHelpers.mergeXml(sourceConfig.doc.getroot(),
+<<<<<<< HEAD
         config.doc.getroot(), 'android', /* clobber= */true);
+=======
+        config.doc.getroot(), 'android', /*clobber=*/true);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     config.write();
     return config;
@@ -114,7 +142,11 @@ function updateConfigFilesFrom (sourceConfig, configMunger, locations) {
 /**
  * Logs all file operations via the verbose event stream, indented.
  */
+<<<<<<< HEAD
 function logFileOp (message) {
+=======
+function logFileOp(message) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     events.emit('verbose', '  ' + message);
 }
 
@@ -127,7 +159,11 @@ function logFileOp (message) {
  * @param   {Object}  destinations      An object that contains destination
  *   paths for www files.
  */
+<<<<<<< HEAD
 function updateWww (cordovaProject, destinations) {
+=======
+function updateWww(cordovaProject, destinations) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var sourceDirs = [
         path.relative(cordovaProject.root, cordovaProject.locations.www),
         path.relative(cordovaProject.root, destinations.platformWww)
@@ -150,7 +186,11 @@ function updateWww (cordovaProject, destinations) {
 /**
  * Cleans all files from the platform 'www' directory.
  */
+<<<<<<< HEAD
 function cleanWww (projectRoot, locations) {
+=======
+function cleanWww(projectRoot, locations) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var targetDir = path.relative(projectRoot, locations.www);
     events.emit('verbose', 'Cleaning ' + targetDir);
 
@@ -166,6 +206,7 @@ function cleanWww (projectRoot, locations) {
  *   be used to update project
  * @param   {Object}  locations       A map of locations for this platform
  */
+<<<<<<< HEAD
 function updateProjectAccordingTo (platformConfig, locations) {
     // Update app name by editing res/values/strings.xml
     var strings = xmlHelpers.parseElementtreeSync(locations.strings);
@@ -178,14 +219,28 @@ function updateProjectAccordingTo (platformConfig, locations) {
         strings.find('string[@name="launcher_name"]').text = shortName.replace(/\'/g, '\\\'');
     }
 
+=======
+function updateProjectAccordingTo(platformConfig, locations) {
+    // Update app name by editing res/values/strings.xml
+    var name = platformConfig.name();
+    var strings = xmlHelpers.parseElementtreeSync(locations.strings);
+    strings.find('string[@name="app_name"]').text = name.replace(/\'/g, '\\\'');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     fs.writeFileSync(locations.strings, strings.write({indent: 4}), 'utf-8');
     events.emit('verbose', 'Wrote out android application name "' + name + '" to ' + locations.strings);
 
     // Java packages cannot support dashes
+<<<<<<< HEAD
     var androidPkgName = (platformConfig.android_packageName() || platformConfig.packageName()).replace(/-/g, '_');
 
     var manifest = new AndroidManifest(locations.manifest);
     var manifestId = manifest.getPackageId();
+=======
+    var pkg = (platformConfig.android_packageName() || platformConfig.packageName()).replace(/-/g, '_');
+
+    var manifest = new AndroidManifest(locations.manifest);
+    var orig_pkg = manifest.getPackageId();
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     manifest.getActivity()
         .setOrientation(platformConfig.getPreference('orientation'))
@@ -193,19 +248,29 @@ function updateProjectAccordingTo (platformConfig, locations) {
 
     manifest.setVersionName(platformConfig.version())
         .setVersionCode(platformConfig.android_versionCode() || default_versionCode(platformConfig.version()))
+<<<<<<< HEAD
         .setPackageId(androidPkgName)
+=======
+        .setPackageId(pkg)
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         .setMinSdkVersion(platformConfig.getPreference('android-minSdkVersion', 'android'))
         .setMaxSdkVersion(platformConfig.getPreference('android-maxSdkVersion', 'android'))
         .setTargetSdkVersion(platformConfig.getPreference('android-targetSdkVersion', 'android'))
         .write();
 
+<<<<<<< HEAD
     var javaPattern = path.join(locations.root, 'src', manifestId.replace(/\./g, '/'), '*.java');
     var java_files = shell.ls(javaPattern).filter(function (f) {
+=======
+    var javaPattern = path.join(locations.root, 'src', orig_pkg.replace(/\./g, '/'), '*.java');
+    var java_files = shell.ls(javaPattern).filter(function(f) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         return shell.grep(/extends\s+CordovaActivity/g, f);
     });
 
     if (java_files.length === 0) {
         throw new CordovaError('No Java files found that extend CordovaActivity.');
+<<<<<<< HEAD
     } else if (java_files.length > 1) {
         events.emit('log', 'Multiple candidate Java files that extend CordovaActivity found. Guessing at the first one, ' + java_files[0]);
     }
@@ -227,6 +292,25 @@ function updateProjectAccordingTo (platformConfig, locations) {
         var sourcesRoot = path.resolve(locations.root, 'src');
         while (currentDir !== sourcesRoot) {
             if (fs.existsSync(currentDir) && fs.readdirSync(currentDir).length === 0) {
+=======
+    } else if(java_files.length > 1) {
+        events.emit('log', 'Multiple candidate Java files that extend CordovaActivity found. Guessing at the first one, ' + java_files[0]);
+    }
+
+    var destFile = path.join(locations.root, 'src', pkg.replace(/\./g, '/'), path.basename(java_files[0]));
+    shell.mkdir('-p', path.dirname(destFile));
+    shell.sed(/package [\w\.]*;/, 'package ' + pkg + ';', java_files[0]).to(destFile);
+    events.emit('verbose', 'Wrote out Android package name "' + pkg + '" to ' + destFile);
+
+    if (orig_pkg !== pkg) {
+        // If package was name changed we need to remove old java with main activity
+        shell.rm('-Rf',java_files[0]);
+        // remove any empty directories
+        var currentDir = path.dirname(java_files[0]);
+        var sourcesRoot = path.resolve(locations.root, 'src');
+        while(currentDir !== sourcesRoot) {
+            if(fs.existsSync(currentDir) && fs.readdirSync(currentDir).length === 0) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 fs.rmdirSync(currentDir);
                 currentDir = path.resolve(currentDir, '..');
             } else {
@@ -239,7 +323,11 @@ function updateProjectAccordingTo (platformConfig, locations) {
 // Consturct the default value for versionCode as
 // PATCH + MINOR * 100 + MAJOR * 10000
 // see http://developer.android.com/tools/publishing/versioning.html
+<<<<<<< HEAD
 function default_versionCode (version) {
+=======
+function default_versionCode(version) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var nums = version.split('-')[0].split('.');
     var versionCode = 0;
     if (+nums[0]) {
@@ -256,7 +344,11 @@ function default_versionCode (version) {
     return versionCode;
 }
 
+<<<<<<< HEAD
 function getImageResourcePath (resourcesDir, type, density, name, sourceName) {
+=======
+function getImageResourcePath(resourcesDir, type, density, name, sourceName) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if (/\.9\.png$/.test(sourceName)) {
         name = name.replace(/\.png$/, '.9.png');
     }
@@ -264,7 +356,11 @@ function getImageResourcePath (resourcesDir, type, density, name, sourceName) {
     return resourcePath;
 }
 
+<<<<<<< HEAD
 function updateSplashes (cordovaProject, platformResourcesDir) {
+=======
+function updateSplashes(cordovaProject, platformResourcesDir) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var resources = cordovaProject.projectConfig.getSplashScreens('android');
 
     // if there are "splash" elements in config.xml
@@ -280,7 +376,11 @@ function updateSplashes (cordovaProject, platformResourcesDir) {
         if (!resource.density) {
             return;
         }
+<<<<<<< HEAD
         if (resource.density === 'mdpi') {
+=======
+        if (resource.density == 'mdpi') {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             hadMdpi = true;
         }
         var targetPath = getImageResourcePath(
@@ -300,7 +400,11 @@ function updateSplashes (cordovaProject, platformResourcesDir) {
         resourceMap, { rootDir: cordovaProject.root }, logFileOp);
 }
 
+<<<<<<< HEAD
 function cleanSplashes (projectRoot, projectConfig, platformResourcesDir) {
+=======
+function cleanSplashes(projectRoot, projectConfig, platformResourcesDir) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var resources = projectConfig.getSplashScreens('android');
     if (resources.length > 0) {
         var resourceMap = mapImageResources(projectRoot, platformResourcesDir, 'drawable', 'screen.png');
@@ -312,7 +416,11 @@ function cleanSplashes (projectRoot, projectConfig, platformResourcesDir) {
     }
 }
 
+<<<<<<< HEAD
 function updateIcons (cordovaProject, platformResourcesDir) {
+=======
+function updateIcons(cordovaProject, platformResourcesDir) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var icons = cordovaProject.projectConfig.getIcons('android');
 
     // if there are icon elements in config.xml
@@ -336,7 +444,11 @@ function updateIcons (cordovaProject, platformResourcesDir) {
     };
     // find the best matching icon for a given density or size
     // @output android_icons
+<<<<<<< HEAD
     var parseIcon = function (icon, icon_size) {
+=======
+    var parseIcon = function(icon, icon_size) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         // do I have a platform icon for that density already
         var density = icon.density || sizeToDensityMap[icon_size];
         if (!density) {
@@ -351,7 +463,11 @@ function updateIcons (cordovaProject, platformResourcesDir) {
     };
 
     // iterate over all icon elements to find the default icon and call parseIcon
+<<<<<<< HEAD
     for (var i = 0; i < icons.length; i++) {
+=======
+    for (var i=0; i<icons.length; i++) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var icon = icons[i];
         var size = icon.width;
         if (!size) {
@@ -388,7 +504,11 @@ function updateIcons (cordovaProject, platformResourcesDir) {
         resourceMap, { rootDir: cordovaProject.root }, logFileOp);
 }
 
+<<<<<<< HEAD
 function cleanIcons (projectRoot, projectConfig, platformResourcesDir) {
+=======
+function cleanIcons(projectRoot, projectConfig, platformResourcesDir) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var icons = projectConfig.getIcons('android');
     if (icons.length > 0) {
         var resourceMap = mapImageResources(projectRoot, platformResourcesDir, 'mipmap', 'icon.png');
@@ -403,16 +523,28 @@ function cleanIcons (projectRoot, projectConfig, platformResourcesDir) {
 /**
  * Gets a map containing resources of a specified name from all drawable folders in a directory.
  */
+<<<<<<< HEAD
 function mapImageResources (rootDir, subDir, type, resourceName) {
     var pathMap = {};
     shell.ls(path.join(rootDir, subDir, type + '-*')).forEach(function (drawableFolder) {
+=======
+function mapImageResources(rootDir, subDir, type, resourceName) {
+    var pathMap = {};
+    shell.ls(path.join(rootDir, subDir, type + '-*'))
+    .forEach(function (drawableFolder) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var imagePath = path.join(subDir, path.basename(drawableFolder), resourceName);
         pathMap[imagePath] = null;
     });
     return pathMap;
 }
 
+<<<<<<< HEAD
 function updateFileResources (cordovaProject, platformDir) {
+=======
+
+function updateFileResources(cordovaProject, platformDir) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var files = cordovaProject.projectConfig.getFileResources('android');
 
     // if there are resource-file elements in config.xml
@@ -422,7 +554,11 @@ function updateFileResources (cordovaProject, platformDir) {
     }
 
     var resourceMap = {};
+<<<<<<< HEAD
     files.forEach(function (res) {
+=======
+    files.forEach(function(res) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var targetPath = path.join(platformDir, res.target);
         resourceMap[targetPath] = res.src;
     });
@@ -432,20 +568,34 @@ function updateFileResources (cordovaProject, platformDir) {
         resourceMap, { rootDir: cordovaProject.root }, logFileOp);
 }
 
+<<<<<<< HEAD
 function cleanFileResources (projectRoot, projectConfig, platformDir) {
     var files = projectConfig.getFileResources('android', true);
+=======
+
+function cleanFileResources(projectRoot, projectConfig, platformDir) {
+    var files = projectConfig.getFileResources('android');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if (files.length > 0) {
         events.emit('verbose', 'Cleaning resource files at ' + platformDir);
 
         var resourceMap = {};
+<<<<<<< HEAD
         files.forEach(function (res) {
+=======
+        files.forEach(function(res) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             var filePath = path.join(platformDir, res.target);
             resourceMap[filePath] = null;
         });
 
         FileUpdater.updatePaths(
+<<<<<<< HEAD
             resourceMap, {
                 rootDir: projectRoot, all: true}, logFileOp);
+=======
+                resourceMap, { rootDir: projectRoot, all: true}, logFileOp);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     }
 }
 
@@ -460,7 +610,11 @@ function cleanFileResources (projectRoot, projectConfig, platformDir) {
  *   default value, if there is no such preference. The default value is
  *   'singleTop'
  */
+<<<<<<< HEAD
 function findAndroidLaunchModePreference (platformConfig) {
+=======
+function findAndroidLaunchModePreference(platformConfig) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var launchMode = platformConfig.getPreference('AndroidLaunchMode');
     if (!launchMode) {
         // Return a default value

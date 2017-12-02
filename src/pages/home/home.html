@@ -1,14 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      รายการสินค้า
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="img/thumbnail-totoro.png">
+      </ion-thumbnail>
+      <h2>กาแฟ</h2>
+      <p>ราคา 1988</p>
+      <button ion-button outline>S</button>
+      <button ion-button outline>M</button>
+      <button ion-button outline>L</button>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="goToCart()">Cart</button>
+  <button ion-button block (click)="goToConfirm()">Confirm</button>
 </ion-content>

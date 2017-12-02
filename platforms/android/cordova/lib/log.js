@@ -19,16 +19,25 @@
        under the License.
 */
 
+<<<<<<< HEAD
 var path = require('path');
 var os = require('os');
 var Q = require('q');
 var child_process = require('child_process');
 var ROOT = path.join(__dirname, '..', '..');
+=======
+var path  = require('path'),
+    os  = require('os'),
+    Q     = require('q'),
+    child_process = require('child_process'),
+    ROOT  = path.join(__dirname, '..', '..');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /*
  * Starts running logcat in the shell.
  * Returns a promise.
  */
+<<<<<<< HEAD
 module.exports.run = function () {
     var d = Q.defer();
     var adb = child_process.spawn('adb', ['logcat'], {cwd: os.tmpdir()});
@@ -36,11 +45,24 @@ module.exports.run = function () {
     adb.stdout.on('data', function (data) {
         var lines = data ? data.toString().split('\n') : [];
         var out = lines.filter(function (x) { return x.indexOf('nativeGetEnabledTags') < 0; });
+=======
+module.exports.run = function() {
+    var d = Q.defer();
+    var adb = child_process.spawn('adb', ['logcat'], {cwd: os.tmpdir()});
+
+    adb.stdout.on('data', function(data) {
+        var lines = data ? data.toString().split('\n') : [];
+        var out = lines.filter(function(x) { return x.indexOf('nativeGetEnabledTags') < 0; });
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         console.log(out.join('\n'));
     });
 
     adb.stderr.on('data', console.error);
+<<<<<<< HEAD
     adb.on('close', function (code) {
+=======
+    adb.on('close', function(code) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         if (code > 0) {
             d.reject('Failed to run logcat command.');
         } else d.resolve();
@@ -49,7 +71,11 @@ module.exports.run = function () {
     return d.promise;
 };
 
+<<<<<<< HEAD
 module.exports.help = function () {
+=======
+module.exports.help = function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     console.log('Usage: ' + path.relative(process.cwd(), path.join(ROOT, 'cordova', 'log')));
     console.log('Gives the logcat output on the command line.');
     process.exit(0);

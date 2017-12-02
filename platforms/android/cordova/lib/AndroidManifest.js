@@ -19,12 +19,20 @@
 
 var fs = require('fs');
 var et = require('elementtree');
+<<<<<<< HEAD
 var xml = require('cordova-common').xmlHelpers;
+=======
+var xml= require('cordova-common').xmlHelpers;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 var DEFAULT_ORIENTATION = 'default';
 
 /** Wraps an AndroidManifest file */
+<<<<<<< HEAD
 function AndroidManifest (path) {
+=======
+function AndroidManifest(path) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     this.path = path;
     this.doc = xml.parseElementtreeSync(path);
     if (this.doc.getroot().tag !== 'manifest') {
@@ -32,24 +40,41 @@ function AndroidManifest (path) {
     }
 }
 
+<<<<<<< HEAD
 AndroidManifest.prototype.getVersionName = function () {
     return this.doc.getroot().attrib['android:versionName'];
 };
 
 AndroidManifest.prototype.setVersionName = function (versionName) {
+=======
+AndroidManifest.prototype.getVersionName = function() {
+    return this.doc.getroot().attrib['android:versionName'];
+};
+
+AndroidManifest.prototype.setVersionName = function(versionName) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     this.doc.getroot().attrib['android:versionName'] = versionName;
     return this;
 };
 
+<<<<<<< HEAD
 AndroidManifest.prototype.getVersionCode = function () {
     return this.doc.getroot().attrib['android:versionCode'];
 };
 
 AndroidManifest.prototype.setVersionCode = function (versionCode) {
+=======
+AndroidManifest.prototype.getVersionCode = function() {
+    return this.doc.getroot().attrib['android:versionCode'];
+};
+
+AndroidManifest.prototype.setVersionCode = function(versionCode) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     this.doc.getroot().attrib['android:versionCode'] = versionCode;
     return this;
 };
 
+<<<<<<< HEAD
 AndroidManifest.prototype.getPackageId = function () {
     /* jshint -W069 */
     return this.doc.getroot().attrib['package'];
@@ -64,6 +89,22 @@ AndroidManifest.prototype.setPackageId = function (pkgId) {
 };
 
 AndroidManifest.prototype.getActivity = function () {
+=======
+AndroidManifest.prototype.getPackageId = function() {
+    /*jshint -W069 */
+    return this.doc.getroot().attrib['package'];
+    /*jshint +W069 */
+};
+
+AndroidManifest.prototype.setPackageId = function(pkgId) {
+    /*jshint -W069 */
+    this.doc.getroot().attrib['package'] = pkgId;
+    /*jshint +W069 */
+    return this;
+};
+
+AndroidManifest.prototype.getActivity = function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var activity = this.doc.getroot().find('./application/activity');
     return {
         getName: function () {
@@ -102,16 +143,29 @@ AndroidManifest.prototype.getActivity = function () {
     };
 };
 
+<<<<<<< HEAD
 ['minSdkVersion', 'maxSdkVersion', 'targetSdkVersion'].forEach(function (sdkPrefName) {
     // Copy variable reference to avoid closure issues
     var prefName = sdkPrefName;
 
     AndroidManifest.prototype['get' + capitalize(prefName)] = function () {
+=======
+['minSdkVersion', 'maxSdkVersion', 'targetSdkVersion']
+.forEach(function(sdkPrefName) {
+    // Copy variable reference to avoid closure issues
+    var prefName = sdkPrefName;
+
+    AndroidManifest.prototype['get' + capitalize(prefName)] = function() {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var usesSdk = this.doc.getroot().find('./uses-sdk');
         return usesSdk && usesSdk.attrib['android:' + prefName];
     };
 
+<<<<<<< HEAD
     AndroidManifest.prototype['set' + capitalize(prefName)] = function (prefValue) {
+=======
+    AndroidManifest.prototype['set' + capitalize(prefName)] = function(prefValue) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         var usesSdk = this.doc.getroot().find('./uses-sdk');
 
         if (!usesSdk && prefValue) { // if there is no required uses-sdk element, we should create it first
@@ -127,11 +181,19 @@ AndroidManifest.prototype.getActivity = function () {
     };
 });
 
+<<<<<<< HEAD
 AndroidManifest.prototype.getDebuggable = function () {
     return this.doc.getroot().find('./application').attrib['android:debuggable'] === 'true';
 };
 
 AndroidManifest.prototype.setDebuggable = function (value) {
+=======
+AndroidManifest.prototype.getDebuggable = function() {
+    return this.doc.getroot().find('./application').attrib['android:debuggable'] === 'true';
+};
+
+AndroidManifest.prototype.setDebuggable = function(value) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var application = this.doc.getroot().find('./application');
     if (value) {
         application.attrib['android:debuggable'] = 'true';
@@ -149,7 +211,11 @@ AndroidManifest.prototype.setDebuggable = function (value) {
  * @param   {String}  [destPath]  File to write manifest to. If omitted,
  *   manifest will be written to file it has been read from.
  */
+<<<<<<< HEAD
 AndroidManifest.prototype.write = function (destPath) {
+=======
+AndroidManifest.prototype.write = function(destPath) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     fs.writeFileSync(destPath || this.path, this.doc.write({indent: 4}), 'utf-8');
 };
 

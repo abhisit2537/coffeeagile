@@ -17,8 +17,13 @@
        under the License.
 */
 
+<<<<<<< HEAD
 var Q = require('q');
 var superspawn = require('cordova-common').superspawn;
+=======
+var Q = require('q'),
+    superspawn = require('cordova-common').superspawn;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 var suffix_number_regex = /(\d+)$/;
 // Used for sorting Android targets, example strings to sort:
@@ -29,7 +34,11 @@ var suffix_number_regex = /(\d+)$/;
 // The idea is to sort based on largest "suffix" number - meaning the bigger
 // the number at the end, the more recent the target, the closer to the
 // start of the array.
+<<<<<<< HEAD
 function sort_by_largest_numerical_suffix (a, b) {
+=======
+function sort_by_largest_numerical_suffix(a, b) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     var suffix_a = a.match(suffix_number_regex);
     var suffix_b = b.match(suffix_number_regex);
     if (suffix_a && suffix_b) {
@@ -43,8 +52,14 @@ function sort_by_largest_numerical_suffix (a, b) {
     }
 }
 
+<<<<<<< HEAD
 module.exports.print_newest_available_sdk_target = function () {
     return module.exports.list_targets().then(function (targets) {
+=======
+module.exports.print_newest_available_sdk_target = function() {
+    return module.exports.list_targets()
+    .then(function(targets) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         targets.sort(sort_by_largest_numerical_suffix);
         console.log(targets[0]);
     });
@@ -65,17 +80,27 @@ module.exports.version_string_to_api_level = {
     '7.1.1': 25
 };
 
+<<<<<<< HEAD
 function parse_targets (output) {
     var target_out = output.split('\n');
     var targets = [];
     for (var i = target_out.length - 1; i >= 0; i--) {
         if (target_out[i].match(/id:/)) { // if "id:" is in the line...
             targets.push(target_out[i].match(/"(.+)"/)[1]); // .. match whatever is in quotes.
+=======
+function parse_targets(output) {
+    var target_out = output.split('\n');
+    var targets = [];
+    for (var i = target_out.length - 1; i >= 0; i--) {
+        if(target_out[i].match(/id:/)) { // if "id:" is in the line...
+            targets.push(target_out[i].match(/"(.+)"/)[1]); //.. match whatever is in quotes.
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         }
     }
     return targets;
 }
 
+<<<<<<< HEAD
 module.exports.list_targets_with_android = function () {
     return superspawn.spawn('android', ['list', 'target']).then(parse_targets);
 };
@@ -93,6 +118,29 @@ module.exports.list_targets = function () {
             return module.exports.list_targets_with_android();
         } else throw err;
     }).then(function (targets) {
+=======
+module.exports.list_targets_with_android = function() {
+    return superspawn.spawn('android', ['list', 'target'])
+    .then(parse_targets);
+};
+
+module.exports.list_targets_with_avdmanager = function() {
+    return superspawn.spawn('avdmanager', ['list', 'target'])
+    .then(parse_targets);
+};
+
+module.exports.list_targets = function() {
+    return module.exports.list_targets_with_avdmanager()
+    .catch(function(err) {
+        // If there's an error, like avdmanager could not be found, we can try
+        // as a last resort, to run `android`, in case this is a super old
+        // SDK installation.
+        if (err && (err.code == 'ENOENT' || (err.stderr && err.stderr.match(/not recognized/)))) {
+            return module.exports.list_targets_with_android();
+        } else throw err;
+    })
+    .then(function(targets) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         if (targets.length === 0) {
             return Q.reject(new Error('No android targets (SDKs) installed!'));
         }

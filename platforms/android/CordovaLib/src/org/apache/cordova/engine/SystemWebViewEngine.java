@@ -110,11 +110,15 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         nativeToJsMessageQueue.addBridgeMode(new NativeToJsMessageQueue.OnlineEventsBridgeMode(new NativeToJsMessageQueue.OnlineEventsBridgeMode.OnlineEventsBridgeModeDelegate() {
             @Override
             public void setNetworkAvailable(boolean value) {
+<<<<<<< HEAD
                 //sometimes this can be called after calling webview.destroy() on destroy()
                 //thus resulting in a NullPointerException
                 if(webView!=null) {
                    webView.setNetworkAvailable(value); 
                 }
+=======
+                webView.setNetworkAvailable(value);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             }
             @Override
             public void runOnUiThread(Runnable r) {
@@ -214,6 +218,14 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         settings.setAppCachePath(databasePath);
         settings.setAppCacheEnabled(true);
 
+<<<<<<< HEAD
+=======
+        // Enable scaling
+        // Fix for CB-12015
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         // Fix for CB-1405
         // Google issue 4641
         String defaultUserAgent = settings.getUserAgentString();

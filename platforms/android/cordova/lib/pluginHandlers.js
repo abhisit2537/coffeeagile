@@ -26,15 +26,25 @@ var events = require('cordova-common').events;
 var CordovaError = require('cordova-common').CordovaError;
 
 var handlers = {
+<<<<<<< HEAD
     'source-file': {
         install: function (obj, plugin, project, options) {
+=======
+    'source-file':{
+        install:function(obj, plugin, project, options) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             if (!obj.src) throw new CordovaError(generateAttributeError('src', 'source-file', plugin.id));
             if (!obj.targetDir) throw new CordovaError(generateAttributeError('target-dir', 'source-file', plugin.id));
 
             var dest = path.join(obj.targetDir, path.basename(obj.src));
 
+<<<<<<< HEAD
             if (options && options.android_studio === true) {
                 dest = path.join('app/src/main/java', obj.targetDir.substring(4), path.basename(obj.src));
+=======
+            if(options && options.android_studio === true) {
+              dest = path.join('app/src/main/java', obj.targetDir.substring(4), path.basename(obj.src));
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             }
 
             if (options && options.force) {
@@ -43,16 +53,25 @@ var handlers = {
                 copyNewFile(plugin.dir, obj.src, project.projectDir, dest, !!(options && options.link));
             }
         },
+<<<<<<< HEAD
         uninstall: function (obj, plugin, project, options) {
             var dest = path.join(obj.targetDir, path.basename(obj.src));
 
             if (options && options.android_studio === true) {
                 dest = path.join('app/src/main/java', obj.targetDir.substring(4), path.basename(obj.src));
+=======
+        uninstall:function(obj, plugin, project, options) {
+            var dest = path.join(obj.targetDir, path.basename(obj.src));
+            
+            if(options && options.android_studio === true) {
+              dest = path.join('app/src/main/java', obj.targetDir.substring(4), path.basename(obj.src));
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             }
 
             deleteJava(project.projectDir, dest);
         }
     },
+<<<<<<< HEAD
     'lib-file': {
         install: function (obj, plugin, project, options) {
             var dest = path.join('libs', path.basename(obj.src));
@@ -65,20 +84,46 @@ var handlers = {
             var dest = path.join('libs', path.basename(obj.src));
             if (options && options.android_studio === true) {
                 dest = path.join('app/libs', path.basename(obj.src));
+=======
+    'lib-file':{
+        install:function(obj, plugin, project, options) {
+            var dest = path.join('libs', path.basename(obj.src));
+            if(options && options.android_studio === true) {
+              dest = path.join('app/libs', path.basename(obj.src));
+            }
+            copyFile(plugin.dir, obj.src, project.projectDir, dest, !!(options && options.link));
+        },
+        uninstall:function(obj, plugin, project, options) {
+            var dest = path.join('libs', path.basename(obj.src));
+            if(options && options.android_studio === true) {
+              dest = path.join('app/libs', path.basename(obj.src));
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             }
             removeFile(project.projectDir, dest);
         }
     },
+<<<<<<< HEAD
     'resource-file': {
         install: function (obj, plugin, project, options) {
             copyFile(plugin.dir, obj.src, project.projectDir, path.normalize(obj.target), !!(options && options.link));
         },
         uninstall: function (obj, plugin, project, options) {
+=======
+    'resource-file':{
+        install:function(obj, plugin, project, options) {
+            copyFile(plugin.dir, obj.src, project.projectDir, path.normalize(obj.target), !!(options && options.link));
+        },
+        uninstall:function(obj, plugin, project, options) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             removeFile(project.projectDir, path.normalize(obj.target));
         }
     },
     'framework': {
+<<<<<<< HEAD
         install: function (obj, plugin, project, options) {
+=======
+        install:function(obj, plugin, project, options) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             var src = obj.src;
             if (!src) throw new CordovaError(generateAttributeError('src', 'framework', plugin.id));
 
@@ -95,15 +140,25 @@ var handlers = {
                 subDir = src;
             }
 
+<<<<<<< HEAD
             if (obj.type === 'gradleReference') {
                 project.addGradleReference(parentDir, subDir);
             } else if (obj.type === 'sys') {
+=======
+            if (obj.type == 'gradleReference') {
+                project.addGradleReference(parentDir, subDir);
+            } else if (obj.type == 'sys') {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 project.addSystemLibrary(parentDir, subDir);
             } else {
                 project.addSubProject(parentDir, subDir);
             }
         },
+<<<<<<< HEAD
         uninstall: function (obj, plugin, project, options) {
+=======
+        uninstall:function(obj, plugin, project, options) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             var src = obj.src;
             if (!src) throw new CordovaError(generateAttributeError('src', 'framework', plugin.id));
 
@@ -125,17 +180,28 @@ var handlers = {
                 subDir = src;
             }
 
+<<<<<<< HEAD
             if (obj.type === 'gradleReference') {
                 project.removeGradleReference(parentDir, subDir);
             } else if (obj.type === 'sys') {
+=======
+            if (obj.type == 'gradleReference') {
+                project.removeGradleReference(parentDir, subDir);
+            } else if (obj.type == 'sys') {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
                 project.removeSystemLibrary(parentDir, subDir);
             } else {
                 project.removeSubProject(parentDir, subDir);
             }
         }
     },
+<<<<<<< HEAD
     asset: {
         install: function (obj, plugin, project, options) {
+=======
+    asset:{
+        install:function(obj, plugin, project, options) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             if (!obj.src) {
                 throw new CordovaError(generateAttributeError('src', 'asset', plugin.id));
             }
@@ -149,7 +215,11 @@ var handlers = {
                 copyFile(plugin.dir, obj.src, project.platformWww, obj.target);
             }
         },
+<<<<<<< HEAD
         uninstall: function (obj, plugin, project, options) {
+=======
+        uninstall:function(obj, plugin, project, options) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             var target = obj.target || obj.src;
 
             if (!target) throw new CordovaError(generateAttributeError('target', 'asset', plugin.id));
@@ -167,7 +237,11 @@ var handlers = {
         install: function (obj, plugin, project, options) {
             // Copy the plugin's files into the www directory.
             var moduleSource = path.resolve(plugin.dir, obj.src);
+<<<<<<< HEAD
             var moduleName = plugin.id + '.' + (obj.name || path.basename(obj.src, path.extname(obj.src)));
+=======
+            var moduleName = plugin.id + '.' + (obj.name || path.basename(obj.src, path.extname (obj.src)));
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
             // Read in the file, prepend the cordova.define, and write it back out.
             var scriptContent = fs.readFileSync(moduleSource, 'utf-8').replace(/^\ufeff/, ''); // Window BOM
@@ -206,7 +280,11 @@ module.exports.getInstaller = function (type) {
     events.emit('verbose', '<' + type + '> is not supported for android plugins');
 };
 
+<<<<<<< HEAD
 module.exports.getUninstaller = function (type) {
+=======
+module.exports.getUninstaller = function(type) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if (handlers[type] && handlers[type].uninstall) {
         return handlers[type].uninstall;
     }
@@ -221,19 +299,33 @@ function copyFile (plugin_dir, src, project_dir, dest, link) {
     // check that src path is inside plugin directory
     var real_path = fs.realpathSync(src);
     var real_plugin_path = fs.realpathSync(plugin_dir);
+<<<<<<< HEAD
     if (real_path.indexOf(real_plugin_path) !== 0) { throw new CordovaError('File "' + src + '" is located outside the plugin directory "' + plugin_dir + '"'); }
+=======
+    if (real_path.indexOf(real_plugin_path) !== 0)
+        throw new CordovaError('File "' + src + '" is located outside the plugin directory "' + plugin_dir + '"');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     dest = path.resolve(project_dir, dest);
 
     // check that dest path is located in project directory
+<<<<<<< HEAD
     if (dest.indexOf(project_dir) !== 0) { throw new CordovaError('Destination "' + dest + '" for source file "' + src + '" is located outside the project'); }
+=======
+    if (dest.indexOf(project_dir) !== 0)
+        throw new CordovaError('Destination "' + dest + '" for source file "' + src + '" is located outside the project');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     shell.mkdir('-p', path.dirname(dest));
     if (link) {
         symlinkFileOrDirTree(src, dest);
     } else if (fs.statSync(src).isDirectory()) {
         // XXX shelljs decides to create a directory when -R|-r is used which sucks. http://goo.gl/nbsjq
+<<<<<<< HEAD
         shell.cp('-Rf', src + '/*', dest);
+=======
+        shell.cp('-Rf', src+'/*', dest);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     } else {
         shell.cp('-f', src, dest);
     }
@@ -242,22 +334,39 @@ function copyFile (plugin_dir, src, project_dir, dest, link) {
 // Same as copy file but throws error if target exists
 function copyNewFile (plugin_dir, src, project_dir, dest, link) {
     var target_path = path.resolve(project_dir, dest);
+<<<<<<< HEAD
     if (fs.existsSync(target_path)) { throw new CordovaError('"' + target_path + '" already exists!'); }
+=======
+    if (fs.existsSync(target_path))
+        throw new CordovaError('"' + target_path + '" already exists!');
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     copyFile(plugin_dir, src, project_dir, dest, !!link);
 }
 
+<<<<<<< HEAD
 function symlinkFileOrDirTree (src, dest) {
+=======
+function symlinkFileOrDirTree(src, dest) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if (fs.existsSync(dest)) {
         shell.rm('-Rf', dest);
     }
 
     if (fs.statSync(src).isDirectory()) {
         shell.mkdir('-p', dest);
+<<<<<<< HEAD
         fs.readdirSync(src).forEach(function (entry) {
             symlinkFileOrDirTree(path.join(src, entry), path.join(dest, entry));
         });
     } else {
+=======
+        fs.readdirSync(src).forEach(function(entry) {
+            symlinkFileOrDirTree(path.join(src, entry), path.join(dest, entry));
+        });
+    }
+    else {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         fs.symlinkSync(path.relative(fs.realpathSync(path.dirname(dest)), src), dest);
     }
 }
@@ -288,8 +397,13 @@ function removeFileAndParents (baseDir, destFile, stopper) {
     // check if directory is empty
     var curDir = path.dirname(file);
 
+<<<<<<< HEAD
     while (curDir !== path.resolve(baseDir, stopper)) {
         if (fs.existsSync(curDir) && fs.readdirSync(curDir).length === 0) {
+=======
+    while(curDir !== path.resolve(baseDir, stopper)) {
+        if(fs.existsSync(curDir) && fs.readdirSync(curDir).length === 0) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
             fs.rmdirSync(curDir);
             curDir = path.resolve(curDir, '..');
         } else {
@@ -299,6 +413,10 @@ function removeFileAndParents (baseDir, destFile, stopper) {
     }
 }
 
+<<<<<<< HEAD
 function generateAttributeError (attribute, element, id) {
+=======
+function generateAttributeError(attribute, element, id) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     return 'Required attribute "' + attribute + '" not specified in <' + element + '> element from plugin: ' + id;
 }

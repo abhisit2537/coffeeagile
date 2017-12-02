@@ -24,10 +24,15 @@ ext {
 
 buildscript {
     repositories {
+<<<<<<< HEAD
         jcenter()
         maven {
             url "https://maven.google.com"
         }
+=======
+        mavenCentral()
+        jcenter()
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     }
 
     dependencies {
@@ -42,7 +47,11 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 group = 'org.apache.cordova'
+<<<<<<< HEAD
 version = '6.3.0'
+=======
+version = '6.2.3'
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 android {
     compileSdkVersion cdvCompileSdkVersion
@@ -129,9 +138,15 @@ bintray {
         licenses = ['Apache-2.0']
         labels = ['android', 'cordova', 'phonegap']
         version {
+<<<<<<< HEAD
             name = '6.3.0'
             released  = new Date()
             vcsTag = '6.3.0'
+=======
+            name = '6.2.3'
+            released  = new Date()
+            vcsTag = '6.2.3'
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
         }
     }
 }

@@ -42,12 +42,19 @@ typedef enum {
 } ParserState;
 
 @interface GCDWebServerMIMEStreamParser : NSObject
+<<<<<<< HEAD
+=======
+- (id)initWithBoundary:(NSString*)boundary defaultControlName:(NSString*)name arguments:(NSMutableArray*)arguments files:(NSMutableArray*)files;
+- (BOOL)appendBytes:(const void*)bytes length:(NSUInteger)length;
+- (BOOL)isAtEnd;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 @end
 
 static NSData* _newlineData = nil;
 static NSData* _newlinesData = nil;
 static NSData* _dashNewlineData = nil;
 
+<<<<<<< HEAD
 @implementation GCDWebServerMultiPart
 
 - (instancetype)initWithControlName:(NSString* _Nonnull)name contentType:(NSString* _Nonnull)type {
@@ -55,15 +62,49 @@ static NSData* _dashNewlineData = nil;
     _controlName = [name copy];
     _contentType = [type copy];
     _mimeType = (NSString*)GCDWebServerTruncateHeaderValue(_contentType);
+=======
+@interface GCDWebServerMultiPart () {
+@private
+  NSString* _controlName;
+  NSString* _contentType;
+  NSString* _mimeType;
+}
+@end
+
+@implementation GCDWebServerMultiPart
+
+@synthesize controlName = _controlName, contentType = _contentType, mimeType = _mimeType;
+
+- (id)initWithControlName:(NSString*)name contentType:(NSString*)type {
+  if ((self = [super init])) {
+    _controlName = [name copy];
+    _contentType = [type copy];
+    _mimeType = GCDWebServerTruncateHeaderValue(_contentType);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   }
   return self;
 }
 
 @end
 
+<<<<<<< HEAD
 @implementation GCDWebServerMultiPartArgument
 
 - (instancetype)initWithControlName:(NSString* _Nonnull)name contentType:(NSString* _Nonnull)type data:(NSData* _Nonnull)data {
+=======
+@interface GCDWebServerMultiPartArgument () {
+@private
+  NSData* _data;
+  NSString* _string;
+}
+@end
+
+@implementation GCDWebServerMultiPartArgument
+
+@synthesize data = _data, string = _string;
+
+- (id)initWithControlName:(NSString*)name contentType:(NSString*)type data:(NSData*)data {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   if ((self = [super initWithControlName:name contentType:type])) {
     _data = data;
 
@@ -81,9 +122,24 @@ static NSData* _dashNewlineData = nil;
 
 @end
 
+<<<<<<< HEAD
 @implementation GCDWebServerMultiPartFile
 
 - (instancetype)initWithControlName:(NSString* _Nonnull)name contentType:(NSString* _Nonnull)type fileName:(NSString* _Nonnull)fileName temporaryPath:(NSString* _Nonnull)temporaryPath {
+=======
+@interface GCDWebServerMultiPartFile () {
+@private
+  NSString* _fileName;
+  NSString* _temporaryPath;
+}
+@end
+
+@implementation GCDWebServerMultiPartFile
+
+@synthesize fileName = _fileName, temporaryPath = _temporaryPath;
+
+- (id)initWithControlName:(NSString*)name contentType:(NSString*)type fileName:(NSString*)fileName temporaryPath:(NSString*)temporaryPath {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   if ((self = [super initWithControlName:name contentType:type])) {
     _fileName = [fileName copy];
     _temporaryPath = [temporaryPath copy];
@@ -101,7 +157,12 @@ static NSData* _dashNewlineData = nil;
 
 @end
 
+<<<<<<< HEAD
 @implementation GCDWebServerMIMEStreamParser {
+=======
+@interface GCDWebServerMIMEStreamParser () {
+@private
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   NSData* _boundary;
   NSString* _defaultcontrolName;
   ParserState _state;
@@ -116,6 +177,12 @@ static NSData* _dashNewlineData = nil;
   int _tmpFile;
   GCDWebServerMIMEStreamParser* _subParser;
 }
+<<<<<<< HEAD
+=======
+@end
+
+@implementation GCDWebServerMIMEStreamParser
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 + (void)initialize {
   if (_newlineData == nil) {
@@ -132,7 +199,11 @@ static NSData* _dashNewlineData = nil;
   }
 }
 
+<<<<<<< HEAD
 - (instancetype)initWithBoundary:(NSString* _Nonnull)boundary defaultControlName:(NSString* _Nullable)name arguments:(NSMutableArray* _Nonnull)arguments files:(NSMutableArray* _Nonnull)files {
+=======
+- (id)initWithBoundary:(NSString*)boundary defaultControlName:(NSString*)name arguments:(NSMutableArray*)arguments files:(NSMutableArray*)files {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   NSData* data = boundary.length ? [[NSString stringWithFormat:@"--%@", boundary] dataUsingEncoding:NSASCIIStringEncoding] : nil;
   if (data == nil) {
     GWS_DNOT_REACHED();
@@ -311,6 +382,7 @@ static NSData* _dashNewlineData = nil;
 
 @end
 
+<<<<<<< HEAD
 @interface GCDWebServerMultiPartFormRequest ()
 @property(nonatomic) NSMutableArray* arguments;
 @property(nonatomic) NSMutableArray* files;
@@ -319,6 +391,19 @@ static NSData* _dashNewlineData = nil;
 @implementation GCDWebServerMultiPartFormRequest {
   GCDWebServerMIMEStreamParser* _parser;
 }
+=======
+@interface GCDWebServerMultiPartFormRequest () {
+@private
+  GCDWebServerMIMEStreamParser* _parser;
+  NSMutableArray* _arguments;
+  NSMutableArray* _files;
+}
+@end
+
+@implementation GCDWebServerMultiPartFormRequest
+
+@synthesize arguments = _arguments, files = _files;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 + (NSString*)mimeType {
   return @"multipart/form-data";

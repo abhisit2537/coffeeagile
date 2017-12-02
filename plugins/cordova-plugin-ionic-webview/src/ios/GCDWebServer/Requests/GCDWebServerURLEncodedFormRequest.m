@@ -31,8 +31,21 @@
 
 #import "GCDWebServerPrivate.h"
 
+<<<<<<< HEAD
 @implementation GCDWebServerURLEncodedFormRequest
 
+=======
+@interface GCDWebServerURLEncodedFormRequest () {
+@private
+  NSDictionary* _arguments;
+}
+@end
+
+@implementation GCDWebServerURLEncodedFormRequest
+
+@synthesize arguments = _arguments;
+
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 + (NSString*)mimeType {
   return @"application/x-www-form-urlencoded";
 }
@@ -45,6 +58,11 @@
   NSString* charset = GCDWebServerExtractHeaderValueParameter(self.contentType, @"charset");
   NSString* string = [[NSString alloc] initWithData:self.data encoding:GCDWebServerStringEncodingFromCharset(charset)];
   _arguments = GCDWebServerParseURLEncodedForm(string);
+<<<<<<< HEAD
+=======
+  GWS_DCHECK(_arguments);
+
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   return YES;
 }
 

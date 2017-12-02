@@ -48,8 +48,11 @@
 #import "GCDWebServerFileResponse.h"
 #import "GCDWebServerStreamedResponse.h"
 
+<<<<<<< HEAD
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  Check if a custom logging facility should be used instead.
  */
@@ -84,6 +87,30 @@ NS_ASSUME_NONNULL_BEGIN
 #define GWS_DNOT_REACHED() XLOG_DEBUG_UNREACHABLE()
 
 /**
+<<<<<<< HEAD
+=======
+ *  Automatically detect if CocoaLumberJack is available and if so use
+ *  it as a logging facility.
+ */
+
+#elif defined(__has_include) && __has_include("CocoaLumberjack/CocoaLumberjack.h")
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
+
+#define __GCDWEBSERVER_LOGGING_FACILITY_COCOALUMBERJACK__
+
+#undef LOG_LEVEL_DEF
+#define LOG_LEVEL_DEF GCDWebServerLogLevel
+extern DDLogLevel GCDWebServerLogLevel;
+
+#define GWS_LOG_DEBUG(...) DDLogDebug(__VA_ARGS__)
+#define GWS_LOG_VERBOSE(...) DDLogVerbose(__VA_ARGS__)
+#define GWS_LOG_INFO(...) DDLogInfo(__VA_ARGS__)
+#define GWS_LOG_WARNING(...) DDLogWarn(__VA_ARGS__)
+#define GWS_LOG_ERROR(...) DDLogError(__VA_ARGS__)
+
+/**
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
  *  If all of the above fail, then use GCDWebServer built-in
  *  logging facility.
  */
@@ -167,6 +194,7 @@ static inline BOOL GCDWebServerIsValidByteRange(NSRange range) {
 }
 
 static inline NSError* GCDWebServerMakePosixError(int code) {
+<<<<<<< HEAD
   return [NSError errorWithDomain:NSPOSIXErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey : (NSString*)[NSString stringWithUTF8String:strerror(code)]}];
 }
 
@@ -174,6 +202,15 @@ extern void GCDWebServerInitializeFunctions();
 extern NSString* _Nullable GCDWebServerNormalizeHeaderValue(NSString* _Nullable value);
 extern NSString* _Nullable GCDWebServerTruncateHeaderValue(NSString* _Nullable value);
 extern NSString* _Nullable GCDWebServerExtractHeaderValueParameter(NSString* _Nullable value, NSString* attribute);
+=======
+  return [NSError errorWithDomain:NSPOSIXErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey : [NSString stringWithUTF8String:strerror(code)]}];
+}
+
+extern void GCDWebServerInitializeFunctions();
+extern NSString* GCDWebServerNormalizeHeaderValue(NSString* value);
+extern NSString* GCDWebServerTruncateHeaderValue(NSString* value);
+extern NSString* GCDWebServerExtractHeaderValueParameter(NSString* header, NSString* attribute);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 extern NSStringEncoding GCDWebServerStringEncodingFromCharset(NSString* charset);
 extern BOOL GCDWebServerIsTextContentType(NSString* type);
 extern NSString* GCDWebServerDescribeData(NSData* data, NSString* contentType);
@@ -181,6 +218,7 @@ extern NSString* GCDWebServerComputeMD5Digest(NSString* format, ...) NS_FORMAT_F
 extern NSString* GCDWebServerStringFromSockAddr(const struct sockaddr* addr, BOOL includeService);
 
 @interface GCDWebServerConnection ()
+<<<<<<< HEAD
 - (instancetype)initWithServer:(GCDWebServer*)server localAddress:(NSData*)localAddress remoteAddress:(NSData*)remoteAddress socket:(CFSocketNativeHandle)socket;
 @end
 
@@ -190,6 +228,17 @@ extern NSString* GCDWebServerStringFromSockAddr(const struct sockaddr* addr, BOO
 @property(nonatomic, readonly, nullable) NSString* authenticationRealm;
 @property(nonatomic, readonly, nullable) NSMutableDictionary* authenticationBasicAccounts;
 @property(nonatomic, readonly, nullable) NSMutableDictionary* authenticationDigestAccounts;
+=======
+- (id)initWithServer:(GCDWebServer*)server localAddress:(NSData*)localAddress remoteAddress:(NSData*)remoteAddress socket:(CFSocketNativeHandle)socket;
+@end
+
+@interface GCDWebServer ()
+@property(nonatomic, readonly) NSArray* handlers;
+@property(nonatomic, readonly) NSString* serverName;
+@property(nonatomic, readonly) NSString* authenticationRealm;
+@property(nonatomic, readonly) NSDictionary* authenticationBasicAccounts;
+@property(nonatomic, readonly) NSDictionary* authenticationDigestAccounts;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 @property(nonatomic, readonly) BOOL shouldAutomaticallyMapHEADToGET;
 @property(nonatomic, readonly) dispatch_queue_priority_t dispatchQueuePriority;
 - (void)willStartConnection:(GCDWebServerConnection*)connection;
@@ -203,13 +252,22 @@ extern NSString* GCDWebServerStringFromSockAddr(const struct sockaddr* addr, BOO
 
 @interface GCDWebServerRequest ()
 @property(nonatomic, readonly) BOOL usesChunkedTransferEncoding;
+<<<<<<< HEAD
 @property(nonatomic) NSData* localAddressData;
 @property(nonatomic) NSData* remoteAddressData;
+=======
+@property(nonatomic, readwrite) NSData* localAddressData;
+@property(nonatomic, readwrite) NSData* remoteAddressData;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 - (void)prepareForWriting;
 - (BOOL)performOpen:(NSError**)error;
 - (BOOL)performWriteData:(NSData*)data error:(NSError**)error;
 - (BOOL)performClose:(NSError**)error;
+<<<<<<< HEAD
 - (void)setAttribute:(nullable id)attribute forKey:(NSString*)key;
+=======
+- (void)setAttribute:(id)attribute forKey:(NSString*)key;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 @end
 
 @interface GCDWebServerResponse ()
@@ -220,5 +278,8 @@ extern NSString* GCDWebServerStringFromSockAddr(const struct sockaddr* addr, BOO
 - (void)performReadDataWithCompletion:(GCDWebServerBodyReaderCompletionBlock)block;
 - (void)performClose;
 @end
+<<<<<<< HEAD
 
 NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

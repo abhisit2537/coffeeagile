@@ -83,6 +83,7 @@ NSString* GCDWebServerNormalizeHeaderValue(NSString* value) {
 }
 
 NSString* GCDWebServerTruncateHeaderValue(NSString* value) {
+<<<<<<< HEAD
   if (value) {
     NSRange range = [value rangeOfString:@";"];
     if (range.location != NSNotFound) {
@@ -90,10 +91,15 @@ NSString* GCDWebServerTruncateHeaderValue(NSString* value) {
     }
   }
   return value;
+=======
+  NSRange range = [value rangeOfString:@";"];
+  return range.location != NSNotFound ? [value substringToIndex:range.location] : value;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 }
 
 NSString* GCDWebServerExtractHeaderValueParameter(NSString* value, NSString* name) {
   NSString* parameter = nil;
+<<<<<<< HEAD
   if (value) {
     NSScanner* scanner = [[NSScanner alloc] initWithString:value];
     [scanner setCaseSensitive:NO];  // Assume parameter names are case-insensitive
@@ -105,6 +111,17 @@ NSString* GCDWebServerExtractHeaderValueParameter(NSString* value, NSString* nam
       } else {
         [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&parameter];
       }
+=======
+  NSScanner* scanner = [[NSScanner alloc] initWithString:value];
+  [scanner setCaseSensitive:NO];  // Assume parameter names are case-insensitive
+  NSString* string = [NSString stringWithFormat:@"%@=", name];
+  if ([scanner scanUpToString:string intoString:NULL]) {
+    [scanner scanString:string intoString:NULL];
+    if ([scanner scanString:@"\"" intoString:NULL]) {
+      [scanner scanUpToString:@"\"" intoString:&parameter];
+    } else {
+      [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&parameter];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     }
   }
   return parameter;
@@ -166,6 +183,7 @@ NSString* GCDWebServerDescribeData(NSData* data, NSString* type) {
   return [NSString stringWithFormat:@"<%lu bytes>", (unsigned long)data.length];
 }
 
+<<<<<<< HEAD
 NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension, NSDictionary* overrides) {
   NSDictionary* builtInOverrides = @{ @"css" : @"text/css" };
   NSString* mimeType = nil;
@@ -175,6 +193,19 @@ NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension, NSDictionary*
     if (mimeType == nil) {
       mimeType = [builtInOverrides objectForKey:extension];
     }
+=======
+NSString* GCDWebServerGetMimeTypeForExtension(NSString* extension) {
+  static NSDictionary* _overrides = nil;
+  if (_overrides == nil) {
+    _overrides = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                           @"text/css", @"css",
+                                           nil];
+  }
+  NSString* mimeType = nil;
+  extension = [extension lowercaseString];
+  if (extension.length) {
+    mimeType = [_overrides objectForKey:extension];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if (mimeType == nil) {
       CFStringRef uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)extension, NULL);
       if (uti) {
@@ -237,6 +268,7 @@ NSDictionary* GCDWebServerParseURLEncodedForm(NSString* form) {
 }
 
 NSString* GCDWebServerStringFromSockAddr(const struct sockaddr* addr, BOOL includeService) {
+<<<<<<< HEAD
   char hostBuffer[NI_MAXHOST];
   char serviceBuffer[NI_MAXSERV];
   if (getnameinfo(addr, addr->sa_len, hostBuffer, sizeof(hostBuffer), serviceBuffer, sizeof(serviceBuffer), NI_NUMERICHOST | NI_NUMERICSERV | NI_NOFQDN) != 0) {
@@ -247,6 +279,17 @@ NSString* GCDWebServerStringFromSockAddr(const struct sockaddr* addr, BOOL inclu
 #endif
   }
   return includeService ? [NSString stringWithFormat:@"%s:%s", hostBuffer, serviceBuffer] : (NSString*)[NSString stringWithUTF8String:hostBuffer];
+=======
+  NSString* string = nil;
+  char hostBuffer[NI_MAXHOST];
+  char serviceBuffer[NI_MAXSERV];
+  if (getnameinfo(addr, addr->sa_len, hostBuffer, sizeof(hostBuffer), serviceBuffer, sizeof(serviceBuffer), NI_NUMERICHOST | NI_NUMERICSERV | NI_NOFQDN) >= 0) {
+    string = includeService ? [NSString stringWithFormat:@"%s:%s", hostBuffer, serviceBuffer] : [NSString stringWithUTF8String:hostBuffer];
+  } else {
+    GWS_DNOT_REACHED();
+  }
+  return string;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 }
 
 NSString* GCDWebServerGetPrimaryIPAddress(BOOL useIPv6) {
@@ -261,10 +304,14 @@ NSString* GCDWebServerGetPrimaryIPAddress(BOOL useIPv6) {
   if (store) {
     CFPropertyListRef info = SCDynamicStoreCopyValue(store, CFSTR("State:/Network/Global/IPv4"));  // There is no equivalent for IPv6 but the primary interface should be the same
     if (info) {
+<<<<<<< HEAD
       NSString* interface = [(__bridge NSDictionary*)info objectForKey:@"PrimaryInterface"];
       if (interface) {
         primaryInterface = [[NSString stringWithString:interface] UTF8String];  // Copy string to auto-release pool
       }
+=======
+      primaryInterface = [[NSString stringWithString:[(__bridge NSDictionary*)info objectForKey:@"PrimaryInterface"]] UTF8String];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
       CFRelease(info);
     }
     CFRelease(store);
@@ -312,5 +359,9 @@ NSString* GCDWebServerComputeMD5Digest(NSString* format, ...) {
     buffer[2 * i + 1] = byteLo >= 10 ? 'a' + byteLo - 10 : '0' + byteLo;
   }
   buffer[2 * CC_MD5_DIGEST_LENGTH] = 0;
+<<<<<<< HEAD
   return (NSString*)[NSString stringWithUTF8String:buffer];
+=======
+  return [NSString stringWithUTF8String:buffer];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 }

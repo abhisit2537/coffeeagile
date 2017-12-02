@@ -27,8 +27,11 @@
 
 #import "GCDWebServerRequest.h"
 
+<<<<<<< HEAD
 NS_ASSUME_NONNULL_BEGIN
 
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerMultiPart class is an abstract class that wraps the content
  *  of a part.
@@ -71,7 +74,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  The text encoding used to interpret the data is extracted from the
  *  "Content-Type" header or defaults to UTF-8.
  */
+<<<<<<< HEAD
 @property(nonatomic, readonly, nullable) NSString* string;
+=======
+@property(nonatomic, readonly) NSString* string;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 @end
 
@@ -124,13 +131,23 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Returns the first argument for a given control name or nil if not found.
  */
+<<<<<<< HEAD
 - (nullable GCDWebServerMultiPartArgument*)firstArgumentForControlName:(NSString*)name;
+=======
+- (GCDWebServerMultiPartArgument*)firstArgumentForControlName:(NSString*)name;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the first file for a given control name or nil if not found.
  */
+<<<<<<< HEAD
 - (nullable GCDWebServerMultiPartFile*)firstFileForControlName:(NSString*)name;
 
 @end
 
 NS_ASSUME_NONNULL_END
+=======
+- (GCDWebServerMultiPartFile*)firstFileForControlName:(NSString*)name;
+
+@end
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
