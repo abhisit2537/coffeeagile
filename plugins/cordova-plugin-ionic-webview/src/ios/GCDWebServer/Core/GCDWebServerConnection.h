@@ -27,6 +27,11 @@
 
 #import "GCDWebServer.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 @class GCDWebServerHandler;
 
 /**
@@ -139,7 +144,11 @@
  *  The default implementation checks for HTTP authentication if applicable
  *  and returns a barebone 401 status code response if authentication failed.
  */
+<<<<<<< HEAD
+- (nullable GCDWebServerResponse*)preflightRequest:(GCDWebServerRequest*)request;
+=======
 - (GCDWebServerResponse*)preflightRequest:(GCDWebServerRequest*)request;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Assuming a valid HTTP request was received and -preflightRequest: returned nil,
@@ -169,7 +178,11 @@
  *  @warning If the request was invalid (e.g. the HTTP headers were malformed),
  *  the "request" argument will be nil.
  */
+<<<<<<< HEAD
+- (void)abortRequest:(nullable GCDWebServerRequest*)request withStatusCode:(NSInteger)statusCode;
+=======
 - (void)abortRequest:(GCDWebServerRequest*)request withStatusCode:(NSInteger)statusCode;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Called when the connection is closed.
@@ -177,3 +190,8 @@
 - (void)close;
 
 @end
+<<<<<<< HEAD
+
+NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

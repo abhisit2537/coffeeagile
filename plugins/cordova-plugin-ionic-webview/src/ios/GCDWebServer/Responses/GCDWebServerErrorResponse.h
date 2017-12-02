@@ -28,6 +28,11 @@
 #import "GCDWebServerDataResponse.h"
 #import "GCDWebServerHTTPStatusCodes.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerDataResponse subclass of GCDWebServerDataResponse generates
  *  an HTML body from an HTTP status code and an error message.
@@ -48,13 +53,21 @@
  *  Creates a client error response with the corresponding HTTP status code
  *  and an underlying NSError.
  */
+<<<<<<< HEAD
++ (instancetype)responseWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode underlyingError:(nullable NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+=======
 + (instancetype)responseWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode underlyingError:(NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a server error response with the corresponding HTTP status code
  *  and an underlying NSError.
  */
+<<<<<<< HEAD
++ (instancetype)responseWithServerError:(GCDWebServerServerErrorHTTPStatusCode)errorCode underlyingError:(nullable NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+=======
 + (instancetype)responseWithServerError:(GCDWebServerServerErrorHTTPStatusCode)errorCode underlyingError:(NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a client error response with the corresponding HTTP status code.
@@ -70,12 +83,24 @@
  *  Initializes a client error response with the corresponding HTTP status code
  *  and an underlying NSError.
  */
+<<<<<<< HEAD
+- (instancetype)initWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode underlyingError:(nullable NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+=======
 - (instancetype)initWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode underlyingError:(NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a server error response with the corresponding HTTP status code
  *  and an underlying NSError.
  */
+<<<<<<< HEAD
+- (instancetype)initWithServerError:(GCDWebServerServerErrorHTTPStatusCode)errorCode underlyingError:(nullable NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
+
+@end
+
+NS_ASSUME_NONNULL_END
+=======
 - (instancetype)initWithServerError:(GCDWebServerServerErrorHTTPStatusCode)errorCode underlyingError:(NSError*)underlyingError message:(NSString*)format, ... NS_FORMAT_FUNCTION(3, 4);
 
 @end
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

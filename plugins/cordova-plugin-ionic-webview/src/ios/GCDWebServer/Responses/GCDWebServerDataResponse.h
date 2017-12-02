@@ -27,11 +27,20 @@
 
 #import "GCDWebServerResponse.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerDataResponse subclass of GCDWebServerResponse reads the body
  *  of the HTTP response from memory.
  */
 @interface GCDWebServerDataResponse : GCDWebServerResponse
+<<<<<<< HEAD
+@property(nonatomic, copy) NSString* contentType;  // Redeclare as non-null
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a response with data in memory and a given content type.
@@ -50,40 +59,68 @@
 /**
  *  Creates a data response from text encoded using UTF-8.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithText:(NSString*)text;
+=======
 + (instancetype)responseWithText:(NSString*)text;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a data response from HTML encoded using UTF-8.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithHTML:(NSString*)html;
+=======
 + (instancetype)responseWithHTML:(NSString*)html;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a data response from an HTML template encoded using UTF-8.
  *  See -initWithHTMLTemplate:variables: for details.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithHTMLTemplate:(NSString*)path variables:(NSDictionary*)variables;
+=======
 + (instancetype)responseWithHTMLTemplate:(NSString*)path variables:(NSDictionary*)variables;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a data response from a serialized JSON object and the default
  *  "application/json" content type.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithJSONObject:(id)object;
+=======
 + (instancetype)responseWithJSONObject:(id)object;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a data response from a serialized JSON object and a custom
  *  content type.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithJSONObject:(id)object contentType:(NSString*)type;
+=======
 + (instancetype)responseWithJSONObject:(id)object contentType:(NSString*)type;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a data response from text encoded using UTF-8.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithText:(NSString*)text;
+=======
 - (instancetype)initWithText:(NSString*)text;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a data response from HTML encoded using UTF-8.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithHTML:(NSString*)html;
+=======
 - (instancetype)initWithHTML:(NSString*)html;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a data response from an HTML template encoded using UTF-8.
@@ -91,18 +128,34 @@
  *  All occurences of "%variable%" within the HTML template are replaced with
  *  their corresponding values.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithHTMLTemplate:(NSString*)path variables:(NSDictionary*)variables;
+=======
 - (instancetype)initWithHTMLTemplate:(NSString*)path variables:(NSDictionary*)variables;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a data response from a serialized JSON object and the default
  *  "application/json" content type.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithJSONObject:(id)object;
+=======
 - (instancetype)initWithJSONObject:(id)object;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a data response from a serialized JSON object and a custom
  *  content type.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithJSONObject:(id)object contentType:(NSString*)type;
+
+@end
+
+NS_ASSUME_NONNULL_END
+=======
 - (instancetype)initWithJSONObject:(id)object contentType:(NSString*)type;
 
 @end
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

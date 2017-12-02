@@ -27,6 +27,11 @@
 
 #import "GCDWebServerResponse.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerFileResponse subclass of GCDWebServerResponse reads the body
  *  of the HTTP response from a file on disk.
@@ -36,17 +41,31 @@
  *  metadata.
  */
 @interface GCDWebServerFileResponse : GCDWebServerResponse
+<<<<<<< HEAD
+@property(nonatomic, copy) NSString* contentType;  // Redeclare as non-null
+@property(nonatomic) NSDate* lastModifiedDate;  // Redeclare as non-null
+@property(nonatomic, copy) NSString* eTag;  // Redeclare as non-null
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a response with the contents of a file.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithFile:(NSString*)path;
+=======
 + (instancetype)responseWithFile:(NSString*)path;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a response like +responseWithFile: and sets the "Content-Disposition"
  *  HTTP header for a download if the "attachment" argument is YES.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithFile:(NSString*)path isAttachment:(BOOL)attachment;
+=======
 + (instancetype)responseWithFile:(NSString*)path isAttachment:(BOOL)attachment;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a response like +responseWithFile: but restricts the file contents
@@ -54,26 +73,42 @@
  *
  *  See -initWithFile:byteRange: for details.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithFile:(NSString*)path byteRange:(NSRange)range;
+=======
 + (instancetype)responseWithFile:(NSString*)path byteRange:(NSRange)range;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Creates a response like +responseWithFile:byteRange: and sets the
  *  "Content-Disposition" HTTP header for a download if the "attachment"
  *  argument is YES.
  */
+<<<<<<< HEAD
++ (nullable instancetype)responseWithFile:(NSString*)path byteRange:(NSRange)range isAttachment:(BOOL)attachment;
+=======
 + (instancetype)responseWithFile:(NSString*)path byteRange:(NSRange)range isAttachment:(BOOL)attachment;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a response with the contents of a file.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithFile:(NSString*)path;
+=======
 - (instancetype)initWithFile:(NSString*)path;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a response like +responseWithFile: and sets the
  *  "Content-Disposition" HTTP header for a download if the "attachment"
  *  argument is YES.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithFile:(NSString*)path isAttachment:(BOOL)attachment;
+=======
 - (instancetype)initWithFile:(NSString*)path isAttachment:(BOOL)attachment;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Initializes a response like -initWithFile: but restricts the file contents
@@ -86,6 +121,23 @@
  *  This argument would typically be set to the value of the byteRange property
  *  of the current GCDWebServerRequest.
  */
+<<<<<<< HEAD
+- (nullable instancetype)initWithFile:(NSString*)path byteRange:(NSRange)range;
+
+/**
+ *  This method is the designated initializer for the class.
+ *
+ *  If MIME type overrides are specified, they allow to customize the built-in
+ *  mapping from extensions to MIME types. Keys of the dictionary must be lowercased
+ *  file extensions without the period, and the values must be the corresponding
+ *  MIME types.
+ */
+- (nullable instancetype)initWithFile:(NSString*)path byteRange:(NSRange)range isAttachment:(BOOL)attachment mimeTypeOverrides:(nullable NSDictionary*)overrides;
+
+@end
+
+NS_ASSUME_NONNULL_END
+=======
 - (instancetype)initWithFile:(NSString*)path byteRange:(NSRange)range;
 
 /**
@@ -94,3 +146,4 @@
 - (instancetype)initWithFile:(NSString*)path byteRange:(NSRange)range isAttachment:(BOOL)attachment;
 
 @end
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

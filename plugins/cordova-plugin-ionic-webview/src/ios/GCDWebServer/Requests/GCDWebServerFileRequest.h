@@ -27,6 +27,11 @@
 
 #import "GCDWebServerRequest.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerFileRequest subclass of GCDWebServerRequest stores the body
  *  of the HTTP request to a file on disk.
@@ -43,3 +48,8 @@
 @property(nonatomic, readonly) NSString* temporaryPath;
 
 @end
+<<<<<<< HEAD
+
+NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

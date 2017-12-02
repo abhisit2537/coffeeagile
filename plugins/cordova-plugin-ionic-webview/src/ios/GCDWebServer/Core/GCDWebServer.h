@@ -30,6 +30,11 @@
 #import "GCDWebServerRequest.h"
 #import "GCDWebServerResponse.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerMatchBlock is called for every handler added to the
  *  GCDWebServer whenever a new HTTP request has started (i.e. HTTP headers have
@@ -40,7 +45,11 @@
  *  GCDWebServerRequest instance created with the same basic info.
  *  Otherwise, it simply returns nil.
  */
+<<<<<<< HEAD
+typedef GCDWebServerRequest* _Nullable (^GCDWebServerMatchBlock)(NSString* requestMethod, NSURL* requestURL, NSDictionary* requestHeaders, NSString* urlPath, NSDictionary* urlQuery);
+=======
 typedef GCDWebServerRequest* (^GCDWebServerMatchBlock)(NSString* requestMethod, NSURL* requestURL, NSDictionary* requestHeaders, NSString* urlPath, NSDictionary* urlQuery);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  The GCDWebServerProcessBlock is called after the HTTP request has been fully
@@ -52,7 +61,11 @@ typedef GCDWebServerRequest* (^GCDWebServerMatchBlock)(NSString* requestMethod, 
  *  recommended to return a GCDWebServerErrorResponse on error so more useful
  *  information can be returned to the client.
  */
+<<<<<<< HEAD
+typedef GCDWebServerResponse* _Nullable (^GCDWebServerProcessBlock)(__kindof GCDWebServerRequest* request);
+=======
 typedef GCDWebServerResponse* (^GCDWebServerProcessBlock)(__kindof GCDWebServerRequest* request);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  The GCDWebServerAsynchronousProcessBlock works like the GCDWebServerProcessBlock
@@ -64,7 +77,11 @@ typedef GCDWebServerResponse* (^GCDWebServerProcessBlock)(__kindof GCDWebServerR
  *  It's however recommended to return a GCDWebServerErrorResponse on error so more
  *  useful information can be returned to the client.
  */
+<<<<<<< HEAD
+typedef void (^GCDWebServerCompletionBlock)(GCDWebServerResponse* _Nullable response);
+=======
 typedef void (^GCDWebServerCompletionBlock)(GCDWebServerResponse* response);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 typedef void (^GCDWebServerAsyncProcessBlock)(__kindof GCDWebServerRequest* request, GCDWebServerCompletionBlock completionBlock);
 
 /**
@@ -295,7 +312,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
 /**
  *  Sets the delegate for the server.
  */
+<<<<<<< HEAD
+@property(nonatomic, weak, nullable) id<GCDWebServerDelegate> delegate;
+=======
 @property(nonatomic, assign) id<GCDWebServerDelegate> delegate;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns YES if the server is currently running.
@@ -315,7 +336,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *  @warning This property is only valid if the server is running and Bonjour
  *  registration has successfully completed, which can take up to a few seconds.
  */
+<<<<<<< HEAD
+@property(nonatomic, readonly, nullable) NSString* bonjourName;
+=======
 @property(nonatomic, readonly) NSString* bonjourName;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the Bonjour service type used by the server.
@@ -323,7 +348,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *  @warning This property is only valid if the server is running and Bonjour
  *  registration has successfully completed, which can take up to a few seconds.
  */
+<<<<<<< HEAD
+@property(nonatomic, readonly, nullable) NSString* bonjourType;
+=======
 @property(nonatomic, readonly) NSString* bonjourType;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  This method is the designated initializer for the class.
@@ -363,7 +392,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  Returns NO if the server failed to start and sets "error" argument if not NULL.
  */
+<<<<<<< HEAD
+- (BOOL)startWithOptions:(nullable NSDictionary*)options error:(NSError** _Nullable)error;
+=======
 - (BOOL)startWithOptions:(NSDictionary*)options error:(NSError**)error;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Stops the server and prevents it to accepts new HTTP requests.
@@ -383,7 +416,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  @warning This property is only valid if the server is running.
  */
+<<<<<<< HEAD
+@property(nonatomic, readonly, nullable) NSURL* serverURL;
+=======
 @property(nonatomic, readonly) NSURL* serverURL;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the server's Bonjour URL.
@@ -393,7 +430,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *  Also be aware this property will not automatically update if the Bonjour hostname
  *  has been dynamically changed after the server started running (this should be rare).
  */
+<<<<<<< HEAD
+@property(nonatomic, readonly, nullable) NSURL* bonjourServerURL;
+=======
 @property(nonatomic, readonly) NSURL* bonjourServerURL;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Returns the server's public URL.
@@ -401,7 +442,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *  @warning This property is only valid if the server is running and NAT port
  *  mapping is active.
  */
+<<<<<<< HEAD
+@property(nonatomic, readonly, nullable) NSURL* publicServerURL;
+=======
 @property(nonatomic, readonly) NSURL* publicServerURL;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Starts the server on port 8080 (OS X & iOS Simulator) or port 80 (iOS)
@@ -418,7 +463,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  Returns NO if the server failed to start.
  */
+<<<<<<< HEAD
+- (BOOL)startWithPort:(NSUInteger)port bonjourName:(nullable NSString*)name;
+=======
 - (BOOL)startWithPort:(NSUInteger)port bonjourName:(NSString*)name;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 #if !TARGET_OS_IPHONE
 
@@ -431,7 +480,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  @warning This method must be used from the main thread only.
  */
+<<<<<<< HEAD
+- (BOOL)runWithPort:(NSUInteger)port bonjourName:(nullable NSString*)name;
+=======
 - (BOOL)runWithPort:(NSUInteger)port bonjourName:(NSString*)name;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Runs the server synchronously using -startWithOptions: until a SIGTERM or
@@ -442,7 +495,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  @warning This method must be used from the main thread only.
  */
+<<<<<<< HEAD
+- (BOOL)runWithOptions:(nullable NSDictionary*)options error:(NSError** _Nullable)error;
+=======
 - (BOOL)runWithOptions:(NSDictionary*)options error:(NSError**)error;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 #endif
 
@@ -498,7 +555,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *  Adds a handler to the server to respond to incoming "GET" HTTP requests
  *  with a specific case-insensitive path with in-memory data.
  */
+<<<<<<< HEAD
+- (void)addGETHandlerForPath:(NSString*)path staticData:(NSData*)staticData contentType:(nullable NSString*)contentType cacheAge:(NSUInteger)cacheAge;
+=======
 - (void)addGETHandlerForPath:(NSString*)path staticData:(NSData*)staticData contentType:(NSString*)contentType cacheAge:(NSUInteger)cacheAge;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 /**
  *  Adds a handler to the server to respond to incoming "GET" HTTP requests
@@ -515,7 +576,11 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *  The "indexFilename" argument allows to specify an "index" file name to use
  *  when the request path corresponds to a directory.
  */
+<<<<<<< HEAD
+- (void)addGETHandlerForBasePath:(NSString*)basePath directoryPath:(NSString*)directoryPath indexFilename:(nullable NSString*)indexFilename cacheAge:(NSUInteger)cacheAge allowRangeRequests:(BOOL)allowRangeRequests;
+=======
 - (void)addGETHandlerForBasePath:(NSString*)basePath directoryPath:(NSString*)directoryPath indexFilename:(NSString*)indexFilename cacheAge:(NSUInteger)cacheAge allowRangeRequests:(BOOL)allowRangeRequests;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 @end
 
@@ -530,11 +595,18 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  Currently supported third-party logging facilities are:
  *  - XLFacility (by the same author as GCDWebServer): https://github.com/swisspol/XLFacility
+<<<<<<< HEAD
+ *
+ *  For the built-in logging facility, the default logging level is INFO
+ *  (or DEBUG if the preprocessor constant "DEBUG" evaluates to non-zero at
+ *  compile time).
+=======
  *  - CocoaLumberjack: https://github.com/CocoaLumberjack/CocoaLumberjack
  *
  *  For both the built-in logging facility and CocoaLumberjack, the default
  *  logging level is INFO (or DEBUG if the preprocessor constant "DEBUG"
  *  evaluates to non-zero at compile time).
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
  *
  *  It's possible to have GCDWebServer use a custom logging facility by defining
  *  the "__GCDWEBSERVER_LOGGING_HEADER__" preprocessor constant in Xcode build
@@ -612,8 +684,17 @@ extern NSString* const GCDWebServerAuthenticationMethod_DigestAccess;
  *
  *  Returns the number of failed tests or -1 if server failed to start.
  */
+<<<<<<< HEAD
+- (NSInteger)runTestsWithOptions:(nullable NSDictionary*)options inDirectory:(NSString*)path;
+=======
 - (NSInteger)runTestsWithOptions:(NSDictionary*)options inDirectory:(NSString*)path;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 @end
 
 #endif
+<<<<<<< HEAD
+
+NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2

@@ -37,12 +37,23 @@
 #define kGZipInitialBufferSize (256 * 1024)
 
 @interface GCDWebServerBodyEncoder : NSObject <GCDWebServerBodyReader>
+<<<<<<< HEAD
+=======
 - (id)initWithResponse:(GCDWebServerResponse*)response reader:(id<GCDWebServerBodyReader>)reader;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 @end
 
 @interface GCDWebServerGZipEncoder : GCDWebServerBodyEncoder
 @end
 
+<<<<<<< HEAD
+@implementation GCDWebServerBodyEncoder {
+  GCDWebServerResponse* __unsafe_unretained _response;
+  id<GCDWebServerBodyReader> __unsafe_unretained _reader;
+}
+
+- (instancetype)initWithResponse:(GCDWebServerResponse* _Nonnull)response reader:(id<GCDWebServerBodyReader> _Nonnull)reader {
+=======
 @interface GCDWebServerBodyEncoder () {
 @private
   GCDWebServerResponse* __unsafe_unretained _response;
@@ -53,6 +64,7 @@
 @implementation GCDWebServerBodyEncoder
 
 - (id)initWithResponse:(GCDWebServerResponse*)response reader:(id<GCDWebServerBodyReader>)reader {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   if ((self = [super init])) {
     _response = response;
     _reader = reader;
@@ -74,6 +86,14 @@
 
 @end
 
+<<<<<<< HEAD
+@implementation GCDWebServerGZipEncoder {
+  z_stream _stream;
+  BOOL _finished;
+}
+
+- (instancetype)initWithResponse:(GCDWebServerResponse* _Nonnull)response reader:(id<GCDWebServerBodyReader> _Nonnull)reader {
+=======
 @interface GCDWebServerGZipEncoder () {
 @private
   z_stream _stream;
@@ -84,6 +104,7 @@
 @implementation GCDWebServerGZipEncoder
 
 - (id)initWithResponse:(GCDWebServerResponse*)response reader:(id<GCDWebServerBodyReader>)reader {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   if ((self = [super initWithResponse:response reader:reader])) {
     response.contentLength = NSUIntegerMax;  // Make sure "Content-Length" header is not set since we don't know it
     [response setValue:@"gzip" forAdditionalHeader:@"Content-Encoding"];
@@ -157,6 +178,9 @@
 
 @end
 
+<<<<<<< HEAD
+@implementation GCDWebServerResponse {
+=======
 @interface GCDWebServerResponse () {
 @private
   NSString* _type;
@@ -169,16 +193,20 @@
   BOOL _chunked;
   BOOL _gzipped;
 
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   BOOL _opened;
   NSMutableArray* _encoders;
   id<GCDWebServerBodyReader> __unsafe_unretained _reader;
 }
+<<<<<<< HEAD
+=======
 @end
 
 @implementation GCDWebServerResponse
 
 @synthesize contentType = _type, contentLength = _length, statusCode = _status, cacheControlMaxAge = _maxAge, lastModifiedDate = _lastModified, eTag = _eTag,
             gzipContentEncodingEnabled = _gzipped, additionalHeaders = _headers;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
 + (instancetype)response {
   return [[[self class] alloc] init];
@@ -186,17 +214,36 @@
 
 - (instancetype)init {
   if ((self = [super init])) {
+<<<<<<< HEAD
+    _contentType = nil;
+    _contentLength = NSUIntegerMax;
+    _statusCode = kGCDWebServerHTTPStatusCode_OK;
+    _cacheControlMaxAge = 0;
+    _additionalHeaders = [[NSMutableDictionary alloc] init];
+=======
     _type = nil;
     _length = NSUIntegerMax;
     _status = kGCDWebServerHTTPStatusCode_OK;
     _maxAge = 0;
     _headers = [[NSMutableDictionary alloc] init];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     _encoders = [[NSMutableArray alloc] init];
   }
   return self;
 }
 
 - (void)setValue:(NSString*)value forAdditionalHeader:(NSString*)header {
+<<<<<<< HEAD
+  [_additionalHeaders setValue:value forKey:header];
+}
+
+- (BOOL)hasBody {
+  return _contentType ? YES : NO;
+}
+
+- (BOOL)usesChunkedTransferEncoding {
+  return (_contentType != nil) && (_contentLength == NSUIntegerMax);
+=======
   [_headers setValue:value forKey:header];
 }
 
@@ -206,6 +253,7 @@
 
 - (BOOL)usesChunkedTransferEncoding {
   return (_type != nil) && (_length == NSUIntegerMax);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 }
 
 - (BOOL)open:(NSError**)error {
@@ -222,7 +270,11 @@
 
 - (void)prepareForReading {
   _reader = self;
+<<<<<<< HEAD
+  if (_gzipContentEncodingEnabled) {
+=======
   if (_gzipped) {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     GCDWebServerGZipEncoder* encoder = [[GCDWebServerGZipEncoder alloc] initWithResponse:self reader:_reader];
     [_encoders addObject:encoder];
     _reader = encoder;
@@ -230,7 +282,11 @@
 }
 
 - (BOOL)performOpen:(NSError**)error {
+<<<<<<< HEAD
+  GWS_DCHECK(_contentType);
+=======
   GWS_DCHECK(_type);
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   GWS_DCHECK(_reader);
   if (_opened) {
     GWS_DNOT_REACHED();
@@ -257,6 +313,18 @@
 }
 
 - (NSString*)description {
+<<<<<<< HEAD
+  NSMutableString* description = [NSMutableString stringWithFormat:@"Status Code = %i", (int)_statusCode];
+  if (_contentType) {
+    [description appendFormat:@"\nContent Type = %@", _contentType];
+  }
+  if (_contentLength != NSUIntegerMax) {
+    [description appendFormat:@"\nContent Length = %lu", (unsigned long)_contentLength];
+  }
+  [description appendFormat:@"\nCache Control Max Age = %lu", (unsigned long)_cacheControlMaxAge];
+  if (_lastModifiedDate) {
+    [description appendFormat:@"\nLast Modified Date = %@", _lastModifiedDate];
+=======
   NSMutableString* description = [NSMutableString stringWithFormat:@"Status Code = %i", (int)_status];
   if (_type) {
     [description appendFormat:@"\nContent Type = %@", _type];
@@ -267,14 +335,22 @@
   [description appendFormat:@"\nCache Control Max Age = %lu", (unsigned long)_maxAge];
   if (_lastModified) {
     [description appendFormat:@"\nLast Modified Date = %@", _lastModified];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   }
   if (_eTag) {
     [description appendFormat:@"\nETag = %@", _eTag];
   }
+<<<<<<< HEAD
+  if (_additionalHeaders.count) {
+    [description appendString:@"\n"];
+    for (NSString* header in [[_additionalHeaders allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
+      [description appendFormat:@"\n%@: %@", header, [_additionalHeaders objectForKey:header]];
+=======
   if (_headers.count) {
     [description appendString:@"\n"];
     for (NSString* header in [[_headers allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
       [description appendFormat:@"\n%@: %@", header, [_headers objectForKey:header]];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     }
   }
   return description;

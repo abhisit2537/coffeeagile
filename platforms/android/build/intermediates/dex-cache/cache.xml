@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="D:\C@NET\agile\coffeeagile\platforms\android\build\intermediates\exploded-aar\org.apache.cordova\CordovaLib\6.2.3\debug\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="cd2af1a7180eb6427b58d868cd841d8212aca77e">
+        <dex dex="D:\C@NET\agile\coffeeagile\platforms\android\build\intermediates\pre-dexed\debug\CordovaLib-6.2.3-debug_a9f83881c5ea7a65ef0aee35450941e159488ed0.jar" />
+    </item>
+
+</items>

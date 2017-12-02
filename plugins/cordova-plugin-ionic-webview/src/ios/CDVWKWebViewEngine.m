@@ -253,8 +253,14 @@
 }
 
 // https://github.com/Telerik-Verified-Plugins/WKWebView/commit/04e8296adeb61f289f9c698045c19b62d080c7e3#L609-L620
+<<<<<<< HEAD
+- (void)keyboardDisplayDoesNotRequireUserAction
+{
+    SEL sel = sel_getUid("_startAssistingNode:userIsInteracting:blurPreviousNode:userObject:");
+=======
 - (void) keyboardDisplayDoesNotRequireUserAction {
 		SEL sel = sel_getUid("_startAssistingNode:userIsInteracting:blurPreviousNode:userObject:");
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   	Class WKContentView = NSClassFromString(@"WKContentView");
   	Method method = class_getInstanceMethod(WKContentView, sel);
   	IMP originalImp = method_getImplementation(method);
@@ -264,13 +270,23 @@
   	method_setImplementation(method, imp);
 }
 
+<<<<<<< HEAD
+- (void)onReset
+{
+=======
 - (void)onReset {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     [self addURLObserver];
 }
 
 static void * KVOContext = &KVOContext;
 
+<<<<<<< HEAD
+- (void)addURLObserver
+{
+=======
 - (void)addURLObserver {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if(!IsAtLeastiOSVersion(@"9.0")){
         [self.webView addObserver:self forKeyPath:@"URL" options:0 context:KVOContext];
     }
@@ -288,7 +304,11 @@ static void * KVOContext = &KVOContext;
     }
 }
 
+<<<<<<< HEAD
+- (void)onAppWillEnterForeground:(NSNotification *)notification {
+=======
 - (void) onAppWillEnterForeground:(NSNotification*)notification {
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     if ([self shouldReloadWebView]) {
         NSLog(@"%@", @"CDVWKWebViewEngine reloading!");
         [(WKWebView*)_engineWebView reload];
@@ -301,7 +321,11 @@ static void * KVOContext = &KVOContext;
     return [self shouldReloadWebView:wkWebView.URL title:wkWebView.title];
 }
 
+<<<<<<< HEAD
+- (BOOL)shouldReloadWebView:(NSURL *)location title:(NSString*)title
+=======
 - (BOOL)shouldReloadWebView:(NSURL*)location title:(NSString*)title
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     BOOL title_is_nil = (title == nil);
     BOOL location_is_blank = [[location absoluteString] isEqualToString:@"about:blank"];
@@ -319,7 +343,11 @@ static void * KVOContext = &KVOContext;
 }
 
 
+<<<<<<< HEAD
+- (id)loadRequest:(NSURLRequest *)request
+=======
 - (id)loadRequest:(NSURLRequest*)request
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     if (request.URL.fileURL) {
         NSURL *url = [[NSURL URLWithString:CDV_LOCAL_SERVER] URLByAppendingPathComponent:request.URL.path];
@@ -334,7 +362,11 @@ static void * KVOContext = &KVOContext;
     return [(WKWebView*)_engineWebView loadRequest:request];
 }
 
+<<<<<<< HEAD
+- (id)loadHTMLString:(NSString *)string baseURL:(NSURL*)baseURL
+=======
 - (id)loadHTMLString:(NSString*)string baseURL:(NSURL*)baseURL
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     return [(WKWebView*)_engineWebView loadHTMLString:string baseURL:baseURL];
 }
@@ -349,9 +381,15 @@ static void * KVOContext = &KVOContext;
     return TRUE;
 }
 
+<<<<<<< HEAD
+- (void)updateSettings:(NSDictionary *)settings
+{
+    WKWebView* wkWebView = (WKWebView *)_engineWebView;
+=======
 - (void)updateSettings:(NSDictionary*)settings
 {
     WKWebView* wkWebView = (WKWebView*)_engineWebView;
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 
     // By default, DisallowOverscroll is false (thus bounce is allowed)
     BOOL bounceAllowed = !([settings cordovaBoolSettingForKey:@"DisallowOverscroll" defaultValue:NO]);
@@ -375,7 +413,11 @@ static void * KVOContext = &KVOContext;
     wkWebView.allowsBackForwardNavigationGestures = [settings cordovaBoolSettingForKey:@"AllowBackForwardNavigationGestures" defaultValue:NO];
 }
 
+<<<<<<< HEAD
+- (void)updateWithInfo:(NSDictionary *)info
+=======
 - (void)updateWithInfo:(NSDictionary*)info
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     NSDictionary* scriptMessageHandlers = [info objectForKey:kCDVWebViewEngineScriptMessageHandlers];
     NSDictionary* settings = [info objectForKey:kCDVWebViewEngineWebViewPreferences];
@@ -417,12 +459,20 @@ static void * KVOContext = &KVOContext;
     return _engineWebView;
 }
 
+<<<<<<< HEAD
+- (UIView *)webView
+=======
 - (UIView*)webView
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     return self.engineWebView;
 }
 
+<<<<<<< HEAD
+- (WKUserScript *)wkPluginScript
+=======
 - (WKUserScript*)wkPluginScript
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     NSString *scriptFile = [[NSBundle mainBundle] pathForResource:@"www/wk-plugin" ofType:@"js"];
     if (scriptFile == nil) {
@@ -441,7 +491,11 @@ static void * KVOContext = &KVOContext;
                                forMainFrameOnly:YES];
 }
 
+<<<<<<< HEAD
+- (WKUserScript *)configScript
+=======
 - (WKUserScript*)configScript
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     Class keyboard = NSClassFromString(@"CDVIonicKeyboard");
     BOOL keyboardPlugin = keyboard != nil;
@@ -449,7 +503,11 @@ static void * KVOContext = &KVOContext;
         return nil;
     }
 
+<<<<<<< HEAD
+    BOOL keyboardResizes = [self.commandDelegate.settings cordovaBoolSettingForKey:@"KeyboardResize" defaultValue:YES];
+=======
     BOOL keyboardResizes = [self.commandDelegate.settings cordovaBoolSettingForKey:@"KeyboardResizes" defaultValue:YES];
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     NSString *source = [NSString stringWithFormat:
                         @"window.Ionic = window.Ionic || {};"
                         @"window.Ionic.keyboardPlugin=true;"
@@ -461,7 +519,11 @@ static void * KVOContext = &KVOContext;
                                forMainFrameOnly:YES];
 }
 
+<<<<<<< HEAD
+- (WKUserScript *)autoCordovify
+=======
 - (WKUserScript*)autoCordovify
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     NSURL *cordovaURL = [[NSBundle mainBundle] URLForResource:@"www/cordova" withExtension:@"js"];
     if (cordovaURL == nil) {
@@ -486,7 +548,11 @@ static void * KVOContext = &KVOContext;
 
 #pragma mark WKScriptMessageHandler implementation
 
+<<<<<<< HEAD
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
+=======
 - (void)userContentController:(WKUserContentController*)userContentController didReceiveScriptMessage:(WKScriptMessage*)message
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 {
     if ([message.name isEqualToString:CDV_BRIDGE_NAME]) {
         [self handleCordovaMessage: message];
@@ -497,9 +563,15 @@ static void * KVOContext = &KVOContext;
 
 - (void)handleCordovaMessage:(WKScriptMessage*)message
 {
+<<<<<<< HEAD
+    CDVViewController *vc = (CDVViewController*)self.viewController;
+
+    NSArray *jsonEntry = message.body; // NSString:callbackId, NSString:service, NSString:action, NSArray:args
+=======
     CDVViewController* vc = (CDVViewController*)self.viewController;
 
     NSArray* jsonEntry = message.body; // NSString:callbackId, NSString:service, NSString:action, NSArray:args
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     CDVInvokedUrlCommand* command = [CDVInvokedUrlCommand commandFromJson:jsonEntry];
     CDV_EXEC_LOG(@"Exec(%@): Calling %@.%@", command.callbackId, command.className, command.methodName);
 

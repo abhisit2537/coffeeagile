@@ -2,6 +2,27 @@
   "_args": [
     [
       {
+<<<<<<< HEAD
+        "raw": "cordova-plugin-ionic-webview@^1.1.11",
+        "scope": null,
+        "escapedName": "cordova-plugin-ionic-webview",
+        "name": "cordova-plugin-ionic-webview",
+        "rawSpec": "^1.1.11",
+        "spec": ">=1.1.11 <2.0.0",
+        "type": "range"
+      },
+      "C:\\Users\\abhis\\Desktop\\coffeeagile"
+    ]
+  ],
+  "_from": "cordova-plugin-ionic-webview@>=1.1.11 <2.0.0",
+  "_id": "cordova-plugin-ionic-webview@1.1.16",
+  "_inCache": true,
+  "_location": "/cordova-plugin-ionic-webview",
+  "_nodeVersion": "8.7.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-ionic-webview-1.1.16.tgz_1508486264927_0.47728348174132407"
+=======
         "raw": "cordova-plugin-ionic-webview@1.1.11",
         "scope": null,
         "escapedName": "cordova-plugin-ionic-webview",
@@ -21,6 +42,7 @@
   "_npmOperationalInternal": {
     "host": "s3://npm-registry-packages",
     "tmp": "tmp/cordova-plugin-ionic-webview-1.1.11.tgz_1507126683090_0.16735983942635357"
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   },
   "_npmUser": {
     "name": "manucorporat",
@@ -29,6 +51,15 @@
   "_npmVersion": "5.4.2",
   "_phantomChildren": {},
   "_requested": {
+<<<<<<< HEAD
+    "raw": "cordova-plugin-ionic-webview@^1.1.11",
+    "scope": null,
+    "escapedName": "cordova-plugin-ionic-webview",
+    "name": "cordova-plugin-ionic-webview",
+    "rawSpec": "^1.1.11",
+    "spec": ">=1.1.11 <2.0.0",
+    "type": "range"
+=======
     "raw": "cordova-plugin-ionic-webview@1.1.11",
     "scope": null,
     "escapedName": "cordova-plugin-ionic-webview",
@@ -36,11 +67,21 @@
     "rawSpec": "1.1.11",
     "spec": "1.1.11",
     "type": "version"
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
+<<<<<<< HEAD
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.16.tgz",
+  "_shasum": "92d5f2e4a5a829f91b487b1761848765a31c9f1e",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-ionic-webview@^1.1.11",
+  "_where": "C:\\Users\\abhis\\Desktop\\coffeeagile",
+  "author": {
+    "name": "Ionic Team"
+=======
   "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.11.tgz",
   "_shasum": "6510b6f6edcd0bbcdd05db6a8fabdc096a466f9c",
   "_shrinkwrap": null,
@@ -48,12 +89,26 @@
   "_where": "D:\\C@NET\\agile\\coffeeagile\\node_modules",
   "author": {
     "name": "Apache Cordova"
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   },
   "bugs": {
     "url": "https://github.com/ionic-team/cordova-plugin-ionic-webview/issues"
   },
   "dependencies": {},
   "description": "The official Ionic's WKWebView Engine Plugin",
+<<<<<<< HEAD
+  "devDependencies": {
+    "np": "^2.16.0",
+    "sync-cordova-xml": "^0.4.0"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-57EW4qNkKyCfcVt0pH11s88Dvwdtgf2UkbAyPNk2+T1cmLVQ503S/+3Wa3l173J0NGt/QGGyUM8Z66LkqTnoWg==",
+    "shasum": "92d5f2e4a5a829f91b487b1761848765a31c9f1e",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.16.tgz"
+  },
+  "gitHead": "41626521c1aab40f608acc09972ebbe1fca72d21",
+=======
   "devDependencies": {},
   "directories": {},
   "dist": {
@@ -62,6 +117,7 @@
     "tarball": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.11.tgz"
   },
   "gitHead": "427497aef22e74fabf4fcf062204aa88a879b502",
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   "homepage": "https://github.com/ionic-team/cordova-plugin-ionic-webview#readme",
   "keywords": [
     "cordova",
@@ -82,5 +138,14 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/cordova-plugin-ionic-webview.git"
   },
+<<<<<<< HEAD
+  "scripts": {
+    "deploy": "np --yolo",
+    "sync_plugin_xml": "sync-cordova-xml package.json plugin.xml --output=plugin.xml",
+    "version": "npm run sync_plugin_xml && git add plugin.xml"
+  },
+  "version": "1.1.16"
+=======
   "version": "1.1.11"
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 }

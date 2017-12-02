@@ -31,10 +31,13 @@
 
 #import "GCDWebServerPrivate.h"
 
+<<<<<<< HEAD
+=======
 @interface GCDWebServerErrorResponse ()
 - (instancetype)initWithStatusCode:(NSInteger)statusCode underlyingError:(NSError*)underlyingError messageFormat:(NSString*)format arguments:(va_list)arguments;
 @end
 
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 @implementation GCDWebServerErrorResponse
 
 + (instancetype)responseWithClientError:(GCDWebServerClientErrorHTTPStatusCode)errorCode message:(NSString*)format, ... {

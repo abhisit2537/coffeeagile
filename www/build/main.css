@@ -25688,6 +25688,10 @@ page-cart ion-thumbnail img {
   height: 100px !important;
 }
 
+page-confirm .paddinglft {
+  padding-left: 10px;
+}
+
 page-home .btn-size {
   height: 40px !important;
   width: 40px;

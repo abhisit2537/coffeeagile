@@ -10,7 +10,11 @@
         "spec": ">=2.2.1 <2.3.0",
         "type": "range"
       },
+<<<<<<< HEAD
+      "C:\\Users\\abhis\\Desktop\\coffeeagile"
+=======
       "D:\\C@NET\\agile\\coffeeagile\\node_modules"
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
     ]
   ],
   "_from": "ionic-plugin-keyboard@>=2.2.1 <2.3.0",
@@ -45,7 +49,11 @@
   "_shasum": "f2a9e169bbe9b5522400347c9fd6d3467ee3fa12",
   "_shrinkwrap": null,
   "_spec": "ionic-plugin-keyboard@~2.2.1",
+<<<<<<< HEAD
+  "_where": "C:\\Users\\abhis\\Desktop\\coffeeagile",
+=======
   "_where": "D:\\C@NET\\agile\\coffeeagile\\node_modules",
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
   "author": {
     "name": "Ionic"
   },

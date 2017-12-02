@@ -27,6 +27,11 @@
 
 #import "GCDWebServerDataRequest.h"
 
+<<<<<<< HEAD
+NS_ASSUME_NONNULL_BEGIN
+
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
 /**
  *  The GCDWebServerURLEncodedFormRequest subclass of GCDWebServerRequest
  *  parses the body of the HTTP request as a URL encoded form using
@@ -49,3 +54,8 @@
 + (NSString*)mimeType;
 
 @end
+<<<<<<< HEAD
+
+NS_ASSUME_NONNULL_END
+=======
+>>>>>>> 4437ea2f09712aa0de9686399ca21f7ea2b27db2
