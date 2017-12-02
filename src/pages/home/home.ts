@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProductModel } from '../../assets/model/product.model';
+import { ServiceProvider } from '../../providers/service/service';
 
 @Component({
   selector: 'page-home',
@@ -10,7 +11,15 @@ export class HomePage {
   coffee: string = 'hot';
   productList: Array<ProductModel> = [];
   items: Array<any> = [];
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public serviceProvider: ServiceProvider
+  ) {
+    // this.serviceProvider.getProductData('hot').then((data) => {
+    //   this.productList = data;
+    // }, (err) => {
+    //   console.log(err);
+    // });
     this.productList.push({
       _id: '1',
       name: "Ice Cocoa",
@@ -31,6 +40,10 @@ export class HomePage {
       ],
       category: "ice"
     });
+  }
+
+  getProduct() {
+    // this.ServiceProvider
   }
 
   goToCart() {
@@ -58,11 +71,11 @@ export class HomePage {
           qty: 1,
           amount: size.price
         });
+        window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
         return;
       }
 
       let indexOfStevie = pSize.findIndex(i => i._id === item._id);
-      console.log(indexOfStevie);
       if (indexOfStevie !== -1) {
         if (pSize[indexOfStevie].size === size.name) {
           pSize[indexOfStevie].qty++;

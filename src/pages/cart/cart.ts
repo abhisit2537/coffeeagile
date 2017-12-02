@@ -20,6 +20,7 @@ export class CartPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.productList = JSON.parse(window.localStorage.getItem('coffeeCart'));
+    console.log(this.productList);
   }
 
   ionViewDidLoad() {
