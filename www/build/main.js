@@ -76,12 +76,11 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Ionic Blank\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-thumbnail item-start>\n\n        <img src="img/thumbnail-totoro.png">\n\n      </ion-thumbnail>\n\n      <h2>My Neighbor Totoro</h2>\n\n      <p>Hayao Miyazaki • 1988</p>\n\n      <button ion-button outline>S</button>\n\n      <button ion-button outline>M</button>\n\n      <button ion-button outline>L</button>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button block (click)="goToCart()">Cart</button>\n\n  <button ion-button block (click)="goToConfirm()">Confirm</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-thumbnail item-start>\n\n        <img src="img/thumbnail-totoro.png">\n\n      </ion-thumbnail>\n\n      <h2>กาแฟ</h2>\n\n      <p>ราคา 1988</p>\n\n      <button ion-button outline>S</button>\n\n      <button ion-button outline>M</button>\n\n      <button ion-button outline>L</button>\n\n    </ion-item>\n\n  </ion-list>\n\n  <button ion-button block (click)="goToCart()">Cart</button>\n\n  <button ion-button block (click)="goToConfirm()">Confirm</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], HomePage);
     return HomePage;
-    var _a;
 }());
 
 //# sourceMappingURL=home.js.map
