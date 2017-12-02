@@ -6,16 +6,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <div padding>
     <ion-segment [(ngModel)]="coffee">
-      <ion-segment-button value="hot">
+      <ion-segment-button (click)="getProductByCategory('hot')" value="hot">
         ร้อน
       </ion-segment-button>
-      <ion-segment-button value="cool">
+      <ion-segment-button (click)="getProductByCategory('ice')" value="cool">
         เย็น
       </ion-segment-button>
-      <ion-segment-button value="frappe">
+      <ion-segment-button (click)="getProductByCategory('frappe')" value="frappe">
         ปั่น
       </ion-segment-button>
     </ion-segment>
@@ -24,43 +24,13 @@
   <div [ngSwitch]="coffee">
     <div *ngSwitchCase="'hot'">
       <ion-list>
-        <ion-item>
+        <ion-item *ngFor="let item of productList">
           <ion-thumbnail item-start>
             <img src="img/thumbnail-totoro.png">
           </ion-thumbnail>
-          <h2>กาแฟ</h2>
+          <h2>{{item.name}}</h2>
           <p>ราคา 1988</p>
-          <button ion-button outline>S</button>
-          <button ion-button outline>M</button>
-          <button ion-button outline>L</button>
-        </ion-item>
-      </ion-list>
-    </div>
-    <div *ngSwitchCase="'cool'">
-      <ion-list>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="img/thumbnail-totoro.png">
-          </ion-thumbnail>
-          <h2>กาแฟ2</h2>
-          <p>ราคา 1988</p>
-          <button ion-button outline>S</button>
-          <button ion-button outline>M</button>
-          <button ion-button outline>L</button>
-        </ion-item>
-      </ion-list>
-    </div>
-    <div *ngSwitchCase="'frappe'">
-      <ion-list>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="img/thumbnail-totoro.png">
-          </ion-thumbnail>
-          <h2>กาแฟ3</h2>
-          <p>ราคา 1988</p>
-          <button ion-button outline>S</button>
-          <button ion-button outline>M</button>
-          <button ion-button outline>L</button>
+          <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}}</button>
         </ion-item>
       </ion-list>
     </div>

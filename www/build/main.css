@@ -25678,6 +25678,21 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+page-cart .btn-size {
+  height: 30px !important;
+  width: 30px;
+}
+
+page-cart ion-thumbnail img {
+  width: 100px !important;
+  height: 100px !important;
+}
+
 page-confirm .paddinglft {
   padding-left: 10px;
+}
+
+page-home .btn-size {
+  height: 40px !important;
+  width: 40px;
 }
