@@ -25720,6 +25720,7 @@ page-login ion-content .button-outline-md {
 page-thankyou .img {
   width: 100%;
   position: fixed;
+  bottom: 0.1vh;
 }
 
 page-welcome .img {
