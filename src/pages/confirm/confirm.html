@@ -14,49 +14,25 @@
 
 
 <ion-content padding>
-    <ion-list>
-        
-            <ion-item>
-              <ion-thumbnail item-start>
-                <img src="assets/img/thumbnail-totoro.png">
-              </ion-thumbnail>
-              <h2 class="paddinglft">ชื่อสินค้า : </h2>
-              <p class="paddinglft">ไซต์ : </p>
-              <p class="paddinglft">จำนวน :</p>
-              <p class="paddinglft">ราคา : </p>
-              
-            </ion-item>
-        
-            <ion-item>
-              <ion-thumbnail item-start>
-                <img src="assets/img/thumbnail-rotla.png">
-              </ion-thumbnail>
-              <h2 class="paddinglft">ชื่อสินค้า : </h2>
-              <p class="paddinglft">ไซต์ : </p>
-              <p class="paddinglft">จำนวน :</p>
-              <p class="paddinglft">ราคา : </p>
-              
-            </ion-item>
-        
-            <ion-item>
-              <ion-thumbnail item-start>
-                <img src="assets/img/thumbnail-ghostbusters.png">
-              </ion-thumbnail>
-              <h2 class="paddinglft">ชื่อสินค้า : </h2>
-              <p class="paddinglft">ไซต์ :  </p>
-              <p class="paddinglft">จำนวน :</p>
-              <p class="paddinglft">ราคา : </p> 
-        
-              
-            </ion-item>
-        
-          </ion-list>
+  <ion-list>
+
+    <ion-item *ngFor="let item of order.items">
+      <ion-thumbnail item-start>
+        <img src="{{item.image}}">
+      </ion-thumbnail>
+      <h2 class="paddinglft">{{item.name}}</h2>
+      <p class="paddinglft">{{item.size}}</p>
+      <p class="paddinglft">{{item.qty}}</p>
+      <p class="paddinglft">{{item.amount}}</p>
+
+    </ion-item>
+  </ion-list>
 
 </ion-content>
 <ion-footer>
-    <ion-item>
-        รวมราคา :  
-        <p item-end >บาท</p>
-      </ion-item>
-    <button ion-button block >Confirm Orders</button>
+  <ion-item>
+    รวมราคา :
+    <p item-end>{{order.amount}}</p>
+  </ion-item>
+  <button ion-button block>ยืนยันการสั่งซื้อ</button>
 </ion-footer>

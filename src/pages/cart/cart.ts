@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ProductModel } from '../../assets/model/product.model';
+import { CartModel } from '../../assets/model/cart.model';
 
 /**
  * Generated class for the CartPage page.
@@ -15,16 +15,50 @@ import { ProductModel } from '../../assets/model/product.model';
   templateUrl: 'cart.html',
 })
 export class CartPage {
-  productList: Array<ProductModel> = [];
-  
-
+  cart: CartModel = new CartModel();
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.productList = JSON.parse(window.localStorage.getItem('coffeeCart'));
-    console.log(this.productList);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CartPage');
+  ionViewWillEnter() {
+    this.cart.items = JSON.parse(window.localStorage.getItem('coffeeCart'));
+    this.onCalculate();
+    console.log(this.cart);
+  }
+
+  add(item) {
+    item.qty++;
+    this.saveCartItem();
+    this.onCalculate();
+  }
+
+  remove(item) {
+    if (item.qty > 1) {
+      item.qty--;
+    }
+    this.saveCartItem();
+    this.onCalculate();
+  }
+
+  delete(index) {
+    this.cart.items.splice(index, 1);
+    this.saveCartItem();
+    this.onCalculate();
+  }
+
+  saveCartItem() {
+    window.localStorage.setItem('coffeeCart', JSON.stringify(this.cart.items));
+  }
+
+  onCalculate() {
+    this.cart.amount = 0;
+    this.cart.items.forEach((e) => {
+      e.amount = e.qty * e.price;
+      this.cart.amount += e.amount;
+    });
+  }
+
+  goToConfirm() {
+    this.navCtrl.push('ConfirmPage', this.cart);
   }
 
 }

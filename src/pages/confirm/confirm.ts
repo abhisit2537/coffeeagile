@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CartModel } from '../../assets/model/cart.model';
 
 /**
  * Generated class for the ConfirmPage page.
@@ -14,12 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'confirm.html',
 })
 export class ConfirmPage {
-
+  order: CartModel = new CartModel();
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfirmPage');
+  ionViewWillEnter() {
+    this.order = this.navParams.data;
   }
 
 }
