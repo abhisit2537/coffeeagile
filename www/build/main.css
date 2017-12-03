@@ -25718,11 +25718,11 @@ page-login ion-content .button-outline-md {
 }
 
 page-thankyou .img {
-  height: 65%;
-  width: 1024px;
+  width: 100%;
+  position: fixed;
 }
 
 page-welcome .img {
-  height: 65%;
-  width: 1024px;
+  position: fixed;
+  width: 100%;
 }
