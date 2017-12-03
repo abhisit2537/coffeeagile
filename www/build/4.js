@@ -70,9 +70,19 @@ var LoginPage = (function () {
     LoginPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad LoginPage');
     };
+<<<<<<< HEAD
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\pages\login\login.html"*/'<!--\n\n  Generated template for the LoginPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>login</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\pages\login\login.html"*/,
+=======
+    LoginPage.prototype.scanbarCode = function () {
+        // alert('xxxxxxxxxxx');
+        this.navCtrl.push('WelcomePage');
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\login\login.html"*/'\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content padding>\n\n  <img src="./assets/imgs/table3.jpg" alt="">\n\n  <h5 class="font" text-center>กรุณากดปุ่ม Scan QR Code เพื่อเข้าสู่ระบบ</h5>\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n  <button ion-button outline text-center round (click)="scanbarCode()">Scan QR Code</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\login\login.html"*/,
+>>>>>>> b491fd837fab8aef4b3ceaace753dc6182d2bc3f
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
     ], LoginPage);

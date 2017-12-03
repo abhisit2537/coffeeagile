@@ -22,4 +22,9 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  scanbarCode(){
+    // alert('xxxxxxxxxxx');
+    this.navCtrl.push('WelcomePage');
+  }
+
 }

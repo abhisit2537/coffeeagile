@@ -78,7 +78,11 @@ var ThankyouPage = (function () {
     };
     ThankyouPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+<<<<<<< HEAD
             selector: 'page-thankyou',template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\pages\thankyou\thankyou.html"*/'<!--\n  Generated template for the ThankyouPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>thankyou</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content no-padding>\n<img src="./assets/imgs/thankyou.jpg" class = "img">\n</ion-content>\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\pages\thankyou\thankyou.html"*/,
+=======
+            selector: 'page-thankyou',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\thankyou\thankyou.html"*/'<!--\n\n  Generated template for the ThankyouPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<!-- <ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>thankyou</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header> -->\n\n\n\n\n\n<ion-content padding>\n\n<img src="../../assets/imgs/thankyou.jpg" class = "img">\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\thankyou\thankyou.html"*/,
+>>>>>>> b491fd837fab8aef4b3ceaace753dc6182d2bc3f
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */]])
     ], ThankyouPage);
