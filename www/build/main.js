@@ -1,6 +1,6 @@
-webpackJsonp([5],{
+webpackJsonp([4],{
 
-/***/ 109:
+/***/ 110:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,7 +13,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 109;
+webpackEmptyAsyncContext.id = 110;
 
 /***/ }),
 
@@ -23,14 +23,11 @@ webpackEmptyAsyncContext.id = 109;
 var map = {
 	"../pages/cart/cart.module": [
 		275,
-		4
+<<<<<<< HEAD
+		3
 	],
 	"../pages/confirm/confirm.module": [
 		276,
-		3
-	],
-	"../pages/login/login.module": [
-		277,
 		2
 	],
 	"../pages/thankyou/thankyou.module": [
@@ -38,8 +35,27 @@ var map = {
 		1
 	],
 	"../pages/welcome/welcome.module": [
-		279,
+		277,
 		0
+=======
+		7
+	],
+	"../pages/confirm/confirm.module": [
+		276,
+		6
+	],
+	"../pages/login/login.module": [
+		284,
+		10
+	],
+	"../pages/thankyou/thankyou.module": [
+		277,
+		9
+	],
+	"../pages/welcome/welcome.module": [
+		278,
+		8
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
 	]
 };
 function webpackAsyncContext(req) {
@@ -78,6 +94,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// import { HttpClient } from '@angular/common/http';
 
 
 
@@ -121,6 +138,10 @@ var ServiceProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_service_service__ = __webpack_require__(152);
+<<<<<<< HEAD
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__ = __webpack_require__(74);
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -133,6 +154,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+<<<<<<< HEAD
 var HomePage = (function () {
     function HomePage(navCtrl, serviceProvider) {
         this.navCtrl = navCtrl;
@@ -168,6 +190,30 @@ var HomePage = (function () {
     }
     HomePage.prototype.getProduct = function () {
         // this.ServiceProvider
+=======
+
+var HomePage = (function () {
+    function HomePage(navCtrl, serviceProvider, loading) {
+        this.navCtrl = navCtrl;
+        this.serviceProvider = serviceProvider;
+        this.loading = loading;
+        this.coffee = 'hot';
+        this.productList = [];
+        this.items = [];
+        this.getProduct('hot');
+    }
+    HomePage.prototype.getProduct = function (cate) {
+        var _this = this;
+        var loadingA = this.loading.create();
+        loadingA.present();
+        this.serviceProvider.getProductData(cate).then(function (data) {
+            _this.productList = data;
+            loadingA.dismiss();
+        }, function (err) {
+            console.log(err);
+            loadingA.dismiss();
+        });
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
     };
     HomePage.prototype.goToCart = function () {
         this.navCtrl.push('CartPage');
@@ -176,9 +222,17 @@ var HomePage = (function () {
         this.navCtrl.push('ConfirmPage');
     };
     HomePage.prototype.getProductByCategory = function (cate) {
+<<<<<<< HEAD
         console.log(cate);
     };
     HomePage.prototype.addProduct = function (item, size) {
+=======
+        this.getProduct(cate);
+    };
+    HomePage.prototype.addProduct = function (item, size) {
+        var loading = this.loading.create();
+        loading.present();
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
         if (this.items.length > 0) {
             var pSize = this.items.filter(function (e) { return e.size === size.name; });
             if (pSize.length === 0) {
@@ -192,6 +246,10 @@ var HomePage = (function () {
                     amount: size.price
                 });
                 window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
+<<<<<<< HEAD
+=======
+                loading.dismiss();
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
                 return;
             }
             var indexOfStevie = pSize.findIndex(function (i) { return i._id === item._id; });
@@ -213,6 +271,18 @@ var HomePage = (function () {
                 }
             }
             else {
+<<<<<<< HEAD
+=======
+                this.items.push({
+                    _id: item._id,
+                    image: item.image,
+                    name: item.name,
+                    size: size.name,
+                    price: size.price,
+                    qty: 1,
+                    amount: size.price
+                });
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
             }
         }
         else {
@@ -227,13 +297,32 @@ var HomePage = (function () {
             });
         }
         window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
+<<<<<<< HEAD
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="coffee">\n\n    <div *ngSwitchCase="\'hot\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of productList">\n\n          <ion-thumbnail item-start>\n\n            <img src="img/thumbnail-totoro.png">\n\n          </ion-thumbnail>\n\n          <h2>{{item.name}}</h2>\n\n          <p>ราคา 1988</p>\n\n          <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}}</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </div>\n\n  </div>\n\n  <button ion-button block (click)="goToCart()">Cart</button>\n\n  <button ion-button block (click)="goToConfirm()">Confirm</button>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div [ngSwitch]="coffee">\n\n    <div *ngSwitchCase="\'hot\'">\n\n      <ion-list>\n\n        <ion-item *ngFor="let item of productList">\n\n          <ion-thumbnail item-start>\n\n            <img src="img/thumbnail-totoro.png">\n\n          </ion-thumbnail>\n\n          <h2>{{item.name}}</h2>\n\n          <p>ราคา 1988</p>\n\n          <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}}</button>\n\n        </ion-item>\n\n      </ion-list>\n\n    </div>\n\n  </div>\n\n  <button ion-button block (click)="goToCart()">Cart</button>\n\n  <button ion-button block (click)="goToConfirm()">Confirm</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_service_service__["a" /* ServiceProvider */]])
+=======
+        loading.dismiss();
+    };
+    HomePage.prototype.getCount = function () {
+        var count = 0;
+        this.items.forEach(function (e) {
+            count += e.qty;
+        });
+        return count ? count : 0;
+    };
+    HomePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-home',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div>\n\n    <ion-list>\n\n      <ion-item *ngFor="let item of productList">\n\n        <ion-thumbnail item-start>\n\n          <img src="{{ item.image }}">\n\n        </ion-thumbnail>\n\n        <h2>{{item.name}}</h2>\n\n        <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}} - {{s.price}}฿</button>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <ion-footer>\n\n    <ion-toolbar>\n\n      <!-- <ion-title>Footer</ion-title> -->\n\n      <button ion-button block large (click)="goToCart()">ตะกร้าสินค้า ({{getCount()}})</button>\n\n    </ion-toolbar>\n\n  </ion-footer>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_service_service__["a" /* ServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]])
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
     ], HomePage);
     return HomePage;
 }());
@@ -301,9 +390,13 @@ var AppModule = (function () {
                     links: [
                         { loadChildren: '../pages/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/confirm/confirm.module#ConfirmPageModule', name: 'ConfirmPage', segment: 'confirm', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+<<<<<<< HEAD
+                        { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/thankyou/thankyou.module#ThankyouPageModule', name: 'ThankyouPage', segment: 'thankyou', priority: 'low', defaultHistory: [] }
+=======
                         { loadChildren: '../pages/thankyou/thankyou.module#ThankyouPageModule', name: 'ThankyouPage', segment: 'thankyou', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
                     ]
                 })
             ],
@@ -349,6 +442,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+<<<<<<< HEAD
+=======
+// import { HomePage } from '../pages/home/home';
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
         // rootPage:any = 'WelcomePage';
@@ -361,7 +458,11 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\app\app.html"*/
+<<<<<<< HEAD
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\app\app.html"*/
+=======
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\app\app.html"*/
+>>>>>>> 3cddf08a11f69efb5135c728a8a34aa0d2f234c8
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

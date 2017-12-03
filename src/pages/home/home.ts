@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProductModel } from '../../assets/model/product.model';
 import { ServiceProvider } from '../../providers/service/service';
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 @Component({
   selector: 'page-home',
@@ -13,37 +14,22 @@ export class HomePage {
   items: Array<any> = [];
   constructor(
     public navCtrl: NavController,
-    public serviceProvider: ServiceProvider
+    public serviceProvider: ServiceProvider,
+    public loading: LoadingController
   ) {
-    // this.serviceProvider.getProductData('hot').then((data) => {
-    //   this.productList = data;
-    // }, (err) => {
-    //   console.log(err);
-    // });
-    this.productList.push({
-      _id: '1',
-      name: "Ice Cocoa",
-      image: "www",
-      size: [
-        {
-          name: "S",
-          price: 40
-        },
-        {
-          name: "M",
-          price: 50
-        },
-        {
-          name: "L",
-          price: 60
-        }
-      ],
-      category: "ice"
-    });
+    this.getProduct('hot');
   }
 
-  getProduct() {
-    // this.ServiceProvider
+  getProduct(cate) {
+    let loadingA = this.loading.create();
+    loadingA.present();
+    this.serviceProvider.getProductData(cate).then((data) => {
+      this.productList = data;
+      loadingA.dismiss();
+    }, (err) => {
+      console.log(err);
+      loadingA.dismiss();
+    });
   }
 
   goToCart() {
@@ -55,10 +41,12 @@ export class HomePage {
   }
 
   getProductByCategory(cate) {
-    console.log(cate);
+    this.getProduct(cate);
   }
 
   addProduct(item, size) {
+    let loading = this.loading.create();
+    loading.present();
     if (this.items.length > 0) {
       let pSize = this.items.filter((e) => e.size === size.name);
       if (pSize.length === 0) {
@@ -72,6 +60,7 @@ export class HomePage {
           amount: size.price
         });
         window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
+        loading.dismiss();
         return;
       }
 
@@ -92,6 +81,15 @@ export class HomePage {
           });
         }
       } else {
+        this.items.push({
+          _id: item._id,
+          image: item.image,
+          name: item.name,
+          size: size.name,
+          price: size.price,
+          qty: 1,
+          amount: size.price
+        });
       }
     } else {
       this.items.push({
@@ -105,6 +103,16 @@ export class HomePage {
       });
     }
     window.localStorage.setItem('coffeeCart', JSON.stringify(this.items));
+    loading.dismiss();
+  }
+
+  getCount() {
+    let count = 0;
+    let items = JSON.parse(window.localStorage.getItem('coffeeCart'));
+    items.forEach((e) => {
+      count += e.qty;
+    });
+    return count ? count : 0;
   }
 
 }
