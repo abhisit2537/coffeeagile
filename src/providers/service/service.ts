@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { ProductModel } from '../../assets/model/product.model';
@@ -18,7 +18,7 @@ export class ServiceProvider {
     console.log('Hello ServiceProvider Provider');
   }
 
-  getProductData(cate): Promise<ProductModel> {
+  getProductData(cate): Promise<Array<ProductModel>> {
     return this.http.get('https://blankblankcoffe.herokuapp.com/api/productsbycate/' + cate)
       .toPromise()
       .then(response => response.json() as Array<ProductModel>)
