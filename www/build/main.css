@@ -25699,18 +25699,22 @@ page-home .btn-size {
 }
 
 page-login ion-content {
-  background: url(http://papers.co/wallpaper/papers.co-mx82-hot-coffee-city-life-winter-2-wallpaper.jpg);
+  background: url(https://images.unsplash.com/photo-1484251065541-c9770829890f?auto=format&fit=crop&w=634&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 page-login ion-content .font {
   font-family: 'Kanit', sans-serif;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 page-login ion-content .button-outline-ios {
   border-width: 5px;
+}
+
+page-login ion-content .button-outline-md {
+  border-width: 4px;
 }
 
 page-thankyou .img {
