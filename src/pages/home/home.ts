@@ -108,7 +108,8 @@ export class HomePage {
 
   getCount() {
     let count = 0;
-    this.items.forEach((e) => {
+    let items = JSON.parse(window.localStorage.getItem('coffeeCart'));
+    items.forEach((e) => {
       count += e.qty;
     });
     return count ? count : 0;
