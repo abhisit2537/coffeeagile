@@ -1,14 +1,25 @@
 webpackJsonp([1],{
 
+<<<<<<< HEAD
 /***/ 275:
+=======
+/***/ 278:
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartPageModule", function() { return CartPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart__ = __webpack_require__(280);
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThankyouPageModule", function() { return ThankyouPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__thankyou__ = __webpack_require__(283);
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+<<<<<<< HEAD
 var CartPageModule = (function () {
     function CartPageModule() {
     }
@@ -57,17 +69,43 @@ var ItemModel = (function () {
 }());
 
 //# sourceMappingURL=cart.model.js.map
+=======
+var ThankyouPageModule = (function () {
+    function ThankyouPageModule() {
+    }
+    ThankyouPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__thankyou__["a" /* ThankyouPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__thankyou__["a" /* ThankyouPage */]),
+            ],
+        })
+    ], ThankyouPageModule);
+    return ThankyouPageModule;
+}());
+
+//# sourceMappingURL=thankyou.module.js.map
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 
 /***/ }),
 
-/***/ 280:
+/***/ 283:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assets_model_cart_model__ = __webpack_require__(279);
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ThankyouPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(49);
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -81,17 +119,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
+<<<<<<< HEAD
  * Generated class for the CartPage page.
+=======
+ * Generated class for the ThankyouPage page.
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+<<<<<<< HEAD
 var CartPage = (function () {
     function CartPage(navCtrl, navParams) {
+=======
+var ThankyouPage = (function () {
+    function ThankyouPage(navCtrl, navParams) {
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.cart = new __WEBPACK_IMPORTED_MODULE_2__assets_model_cart_model__["a" /* CartModel */]();
     }
+<<<<<<< HEAD
     CartPage.prototype.ionViewWillEnter = function () {
         this.cart.items = JSON.parse(window.localStorage.getItem('coffeeCart'));
         this.onCalculate();
@@ -138,6 +186,25 @@ var CartPage = (function () {
 }());
 
 //# sourceMappingURL=cart.js.map
+=======
+    ThankyouPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
+        }, 3000);
+        console.log('ionViewDidLoad ThankyouPage');
+    };
+    ThankyouPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'page-thankyou',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\thankyou\thankyou.html"*/'<!--\n\n  Generated template for the ThankyouPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<!-- <ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>thankyou</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header> -->\n\n\n\n\n\n<ion-content padding>\n\n<img src="../../assets/imgs/thankyou.jpg" class = "img">\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\thankyou\thankyou.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */]])
+    ], ThankyouPage);
+    return ThankyouPage;
+}());
+
+//# sourceMappingURL=thankyou.js.map
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 
 /***/ })
 

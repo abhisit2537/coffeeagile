@@ -23,19 +23,23 @@ webpackEmptyAsyncContext.id = 110;
 var map = {
 	"../pages/cart/cart.module": [
 		275,
-		1
+		7
 	],
 	"../pages/confirm/confirm.module": [
 		276,
-		0
+		6
+	],
+	"../pages/login/login.module": [
+		284,
+		10
 	],
 	"../pages/thankyou/thankyou.module": [
 		277,
-		3
+		9
 	],
 	"../pages/welcome/welcome.module": [
 		278,
-		2
+		8
 	]
 };
 function webpackAsyncContext(req) {
@@ -228,8 +232,7 @@ var HomePage = (function () {
     };
     HomePage.prototype.getCount = function () {
         var count = 0;
-        var items = JSON.parse(window.localStorage.getItem('coffeeCart'));
-        items.forEach(function (e) {
+        this.items.forEach(function (e) {
             count += e.qty;
         });
         return count ? count : 0;
@@ -238,10 +241,11 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div>\n\n    <ion-list>\n\n      <ion-item *ngFor="let item of productList">\n\n        <ion-thumbnail item-start>\n\n          <img src="{{ item.image }}">\n\n        </ion-thumbnail>\n\n        <h2>{{item.name}}</h2>\n\n        <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}} - {{s.price}}฿</button>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <ion-footer>\n\n    <ion-toolbar>\n\n      <!-- <ion-title>Footer</ion-title> -->\n\n      <button ion-button block large (click)="goToCart()">ตะกร้าสินค้า ({{getCount()}})</button>\n\n    </ion-toolbar>\n\n  </ion-footer>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_service_service__["a" /* ServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_service_service__["a" /* ServiceProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_service_service__["a" /* ServiceProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map

@@ -5,10 +5,17 @@ webpackJsonp([2],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomePageModule", function() { return WelcomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__welcome__ = __webpack_require__(283);
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(282);
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,6 +25,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+<<<<<<< HEAD
 var WelcomePageModule = (function () {
     function WelcomePageModule() {
     }
@@ -46,6 +54,35 @@ var WelcomePageModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(49);
+=======
+var LoginPageModule = (function () {
+    function LoginPageModule() {
+    }
+    LoginPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+            ],
+        })
+    ], LoginPageModule);
+    return LoginPageModule;
+}());
+
+//# sourceMappingURL=login.module.js.map
+
+/***/ }),
+
+/***/ 282:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,11 +96,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
+<<<<<<< HEAD
  * Generated class for the WelcomePage page.
+=======
+ * Generated class for the LoginPage page.
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+<<<<<<< HEAD
 var WelcomePage = (function () {
     function WelcomePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
@@ -86,6 +128,26 @@ var WelcomePage = (function () {
 }());
 
 //# sourceMappingURL=welcome.js.map
+=======
+var LoginPage = (function () {
+    function LoginPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    LoginPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad LoginPage');
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\login\login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\login\login.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+    ], LoginPage);
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login.js.map
+>>>>>>> 43261a99f1c534af1b3e3c44b2f3f3d63f619e71
 
 /***/ })
 
