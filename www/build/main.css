@@ -25698,11 +25698,13 @@ page-home .btn-size {
 }
 
 page-thankyou .img {
-  height: 65%;
-  width: 1024px;
+  margin-top: 10vh;
+  height: 55%;
+  width: 100%;
 }
 
 page-welcome .img {
-  height: 65%;
+  margin-top: 23vh;
+  height: 50%;
   width: 1024px;
 }
