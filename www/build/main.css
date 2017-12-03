@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Athiti|Kanit");
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -25695,6 +25696,14 @@ page-confirm .paddinglft {
 page-home .btn-size {
   height: 40px !important;
   width: 70px;
+}
+
+page-login {
+  background: url(https://i.pinimg.com/564x/04/7f/15/047f154565ecc65a5afd27c287debf15.jpg);
+}
+
+page-login .font {
+  font-family: 'Kanit', sans-serif;
 }
 
 page-thankyou .img {
