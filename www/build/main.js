@@ -240,11 +240,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-<<<<<<< HEAD
             selector: 'page-home',template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div>\n\n    <ion-list>\n\n      <ion-item *ngFor="let item of productList">\n\n        <ion-thumbnail item-start>\n\n          <img src="{{ item.image }}">\n\n        </ion-thumbnail>\n\n        <h2>{{item.name}}</h2>\n\n        <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}} - {{s.price}}฿</button>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <ion-footer>\n\n    <ion-toolbar>\n\n      <!-- <ion-title>Footer</ion-title> -->\n\n      <button ion-button block large (click)="goToCart()">ตะกร้าสินค้า ({{getCount()}})</button>\n\n    </ion-toolbar>\n\n  </ion-footer>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\pages\home\home.html"*/
-=======
-            selector: 'page-home',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      รายการสินค้า\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <div padding>\n\n    <ion-segment [(ngModel)]="coffee">\n\n      <ion-segment-button (click)="getProductByCategory(\'hot\')" value="hot">\n\n        ร้อน\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'ice\')" value="cool">\n\n        เย็น\n\n      </ion-segment-button>\n\n      <ion-segment-button (click)="getProductByCategory(\'frappe\')" value="frappe">\n\n        ปั่น\n\n      </ion-segment-button>\n\n    </ion-segment>\n\n  </div>\n\n\n\n  <div>\n\n    <ion-list>\n\n      <ion-item *ngFor="let item of productList">\n\n        <ion-thumbnail item-start>\n\n          <img src="{{ item.image }}">\n\n        </ion-thumbnail>\n\n        <h2>{{item.name}}</h2>\n\n        <button *ngFor="let s of item.size" ion-button outline (click)="addProduct(item,s)" class="btn-size">{{s.name}} - {{s.price}}฿</button>\n\n      </ion-item>\n\n    </ion-list>\n\n  </div>\n\n  <ion-footer>\n\n    <ion-toolbar>\n\n      <!-- <ion-title>Footer</ion-title> -->\n\n      <button ion-button block large (click)="goToCart()">ตะกร้าสินค้า ({{getCount()}})</button>\n\n    </ion-toolbar>\n\n  </ion-footer>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\home\home.html"*/
->>>>>>> b491fd837fab8aef4b3ceaace753dc6182d2bc3f
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_service_service__["a" /* ServiceProvider */],
@@ -367,12 +363,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // import { HomePage } from '../pages/home/home';
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen) {
-<<<<<<< HEAD
-        this.rootPage = 'ThankyouPage';
-=======
         // rootPage:any = 'WelcomePage';
         this.rootPage = 'LoginPage';
->>>>>>> b491fd837fab8aef4b3ceaace753dc6182d2bc3f
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -381,16 +373,11 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-<<<<<<< HEAD
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\app\app.html"*/
-=======
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\app\app.html"*/
->>>>>>> b491fd837fab8aef4b3ceaace753dc6182d2bc3f
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=app.component.js.map
