@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Athiti|Kanit');
 page-login {
-    background: url(https://i.pinimg.com/564x/04/7f/15/047f154565ecc65a5afd27c287debf15.jpg);
-    .font {
-        font-family: 'Kanit', sans-serif;
-        // font-family: 'Athiti', sans-serif;
-    }
+    ion-content {
+        background: url(http://papers.co/wallpaper/papers.co-mx82-hot-coffee-city-life-winter-2-wallpaper.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        .font {
+            font-family: 'Kanit', sans-serif; // font-family: 'Athiti', sans-serif;
+            margin-top: 100px;
+        }
+        .button-outline-ios{
+            border-width: 5px;
+        }
+    } 
 }

@@ -25698,12 +25698,19 @@ page-home .btn-size {
   width: 70px;
 }
 
-page-login {
-  background: url(https://i.pinimg.com/564x/04/7f/15/047f154565ecc65a5afd27c287debf15.jpg);
+page-login ion-content {
+  background: url(http://papers.co/wallpaper/papers.co-mx82-hot-coffee-city-life-winter-2-wallpaper.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-page-login .font {
+page-login ion-content .font {
   font-family: 'Kanit', sans-serif;
+  margin-top: 100px;
+}
+
+page-login ion-content .button-outline-ios {
+  border-width: 5px;
 }
 
 page-thankyou .img {
