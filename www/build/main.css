@@ -25696,3 +25696,13 @@ page-home .btn-size {
   height: 40px !important;
   width: 40px;
 }
+
+page-thankyou .img {
+  height: 65%;
+  width: 1024px;
+}
+
+page-welcome .img {
+  height: 65%;
+  width: 1024px;
+}

@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 276:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmPageModule", function() { return ConfirmPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WelcomePageModule", function() { return WelcomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirm__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__welcome__ = __webpack_require__(282);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmPageModule = (function () {
-    function ConfirmPageModule() {
+var WelcomePageModule = (function () {
+    function WelcomePageModule() {
     }
-    ConfirmPageModule = __decorate([
+    WelcomePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__confirm__["a" /* ConfirmPage */],
+                __WEBPACK_IMPORTED_MODULE_2__welcome__["a" /* WelcomePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__confirm__["a" /* ConfirmPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__welcome__["a" /* WelcomePage */]),
             ],
         })
-    ], ConfirmPageModule);
-    return ConfirmPageModule;
+    ], WelcomePageModule);
+    return WelcomePageModule;
 }());
 
-//# sourceMappingURL=confirm.module.js.map
+//# sourceMappingURL=welcome.module.js.map
 
 /***/ }),
 
-/***/ 278:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WelcomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,30 +57,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Generated class for the ConfirmPage page.
+ * Generated class for the WelcomePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ConfirmPage = (function () {
-    function ConfirmPage(navCtrl, navParams) {
+var WelcomePage = (function () {
+    function WelcomePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    ConfirmPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ConfirmPage');
+    WelcomePage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
+        }, 3000);
+        console.log('ionViewDidLoad WelcomePage');
     };
-    ConfirmPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirm',template:/*ion-inline-start:"D:\C@NET\agile\coffeeagile\src\pages\confirm\confirm.html"*/'<!--\n\n  Generated template for the ConfirmPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>สรุปรายการสั่งซื้อ</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        \n\n            <ion-item>\n\n              <ion-thumbnail item-start>\n\n                <img src="assets/img/thumbnail-totoro.png">\n\n              </ion-thumbnail>\n\n              <h2 class="paddinglft">ชื่อสินค้า : </h2>\n\n              <p class="paddinglft">ไซต์ : </p>\n\n              <p class="paddinglft">จำนวน :</p>\n\n              <p class="paddinglft">ราคา : </p>\n\n              \n\n            </ion-item>\n\n        \n\n            <ion-item>\n\n              <ion-thumbnail item-start>\n\n                <img src="assets/img/thumbnail-rotla.png">\n\n              </ion-thumbnail>\n\n              <h2 class="paddinglft">ชื่อสินค้า : </h2>\n\n              <p class="paddinglft">ไซต์ : </p>\n\n              <p class="paddinglft">จำนวน :</p>\n\n              <p class="paddinglft">ราคา : </p>\n\n              \n\n            </ion-item>\n\n        \n\n            <ion-item>\n\n              <ion-thumbnail item-start>\n\n                <img src="assets/img/thumbnail-ghostbusters.png">\n\n              </ion-thumbnail>\n\n              <h2 class="paddinglft">ชื่อสินค้า : </h2>\n\n              <p class="paddinglft">ไซต์ :  </p>\n\n              <p class="paddinglft">จำนวน :</p>\n\n              <p class="paddinglft">ราคา : </p> \n\n        \n\n              \n\n            </ion-item>\n\n        \n\n          </ion-list>\n\n\n\n</ion-content>\n\n<ion-footer>\n\n    <ion-item>\n\n        รวมราคา :  \n\n        <p item-end >บาท</p>\n\n      </ion-item>\n\n    <button ion-button block >Confirm Orders</button>\n\n</ion-footer>\n\n'/*ion-inline-end:"D:\C@NET\agile\coffeeagile\src\pages\confirm\confirm.html"*/,
+    WelcomePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'page-welcome',template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\pages\welcome\welcome.html"*/'<!--\n  Generated template for the WelcomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>welcome</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content padding>\n  <ion-content padding>\n    <img src="../../assets/imgs/welcome.jpg" class = "img">\n    </ion-content>\n</ion-content>\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\pages\welcome\welcome.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
-    ], ConfirmPage);
-    return ConfirmPage;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
+    ], WelcomePage);
+    return WelcomePage;
+    var _a, _b;
 }());
 
-//# sourceMappingURL=confirm.js.map
+//# sourceMappingURL=welcome.js.map
 
 /***/ })
 
