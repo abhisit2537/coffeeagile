@@ -76,11 +76,7 @@ var LoginPage = (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-<<<<<<< HEAD
             selector: 'page-login',template:/*ion-inline-start:"D:\projectTraningServer\coffeeagile\src\pages\login\login.html"*/'\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>login</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n\n<ion-content padding>\n\n  <img src="./assets/imgs/QR_code_for_QRpedia.png" alt="">\n\n  <h5 class="font" text-center>กรุณากดปุ่ม Scan QR Code เพื่อเข้าสู่ระบบ</h5>\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n  <button ion-button outline text-center round (click)="scanbarCode()">Scan QR Code</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\projectTraningServer\coffeeagile\src\pages\login\login.html"*/,
-=======
-            selector: 'page-login',template:/*ion-inline-start:"C:\Users\abhis\Desktop\coffeeagile\src\pages\login\login.html"*/'\n\n<!-- <ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>login</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header> -->\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <img src="./assets/imgs/table3.jpg" alt="">\n\n\n\n  <h5 class="font" text-center>กรุณากดปุ่ม Scan QR Code เพื่อเข้าสู่ระบบ</h5>\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col text-center>\n\n  <button ion-button outline text-center round (click)="scanbarCode()">Scan QR Code</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\abhis\Desktop\coffeeagile\src\pages\login\login.html"*/,
->>>>>>> db9edf3eddb942dfb027e1bb25276a0d551721ca
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
     ], LoginPage);
